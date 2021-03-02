@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      金魚切版練習−登入表單 | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>金魚切版練習−登入表單</h2>
+  <p class="post-date">2020-11-15</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10224402">金魚切版練習17鐵人賽網頁傳送門</a></p>
+<p>首先我們來看看實際做出來的畫面呈現↓<br><a target="_blank" rel="noopener" href="https://jessie1120.github.io/CSSprojects/goldfish_layouts/goldfish17.html">實作完成傳送門</a><br><img src="https://i.imgur.com/KtIGiQc.jpg"></p>
+<p>畫面的中心有一個會員登入的表單<br>包含了帳號、密碼欄位還有登入、取消的按鈕。</p>
+<hr>
+<p>我們先將html的基本架構做出來並填入內容<br>這邊我們會用到<code>form</code>表單標籤、<code>label</code>標籤、<code>input</code>輸入欄位標籤以及<code>button</code>按鈕標籤。<br><code>label</code>標籤中的<code>for</code>屬性可以讓你點擊帳號或者密碼這兩個文字時直接跳到輸出欄位的區域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;login&quot;&gt;</span><br><span class="line">    &lt;form class&#x3D;&quot;form&quot;&gt;</span><br><span class="line">        &lt;h2&gt;會員登入&lt;&#x2F;h2&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;group&quot;&gt;</span><br><span class="line">            &lt;label for&#x3D;&quot;user_id&quot;&gt;帳號&lt;&#x2F;label&gt;</span><br><span class="line">            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;user_id&quot;&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;group&quot;&gt;</span><br><span class="line">            &lt;label for&#x3D;&quot;user_password&quot;&gt;密碼&lt;&#x2F;label&gt;  </span><br><span class="line">            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;user_password&quot;&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;btn-group&quot;&gt;</span><br><span class="line">            &lt;button class&#x3D;&quot;btn&quot;&gt;登入&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;button class&#x3D;&quot;btn&quot;&gt;取消&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>這時候我們做出的效果大概會是這樣↓<br><img src="https://i.imgur.com/C70otl4.png"></p>
+<hr>
+<p>接下來開始進入CSS切版調整<br>一樣是先做出<code>&lt;style&gt;</code>標籤及<code>reset css</code>並加入字體。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">    @import url(&#39;字體網址&#39;);</span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">        list-style: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下來我們將背景設定高度及加入圖片</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">      <span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">&quot;圖片網址&quot;</span>) no-repeat center center / cover;</span><br><span class="line">&#125;</span><br><span class="line">        <span class="comment">/*背景圖設定不重複，整體置中，全頁背景*/</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候我們網頁會長這樣↓<br><img src="https://i.imgur.com/qIXwSvs.jpg"></p>
+<hr>
+<p>再來設定整個表單並置中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.login</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">600px</span>;                        <span class="comment">/*設定寬度*/</span></span><br><span class="line">        <span class="attribute">height</span>: <span class="number">500px</span>;                       <span class="comment">/*設定高度*/</span></span><br><span class="line">        <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">5</span>);    <span class="comment">/*背景色彩設為半透明*/</span></span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">10px</span>;                 <span class="comment">/*圓角設定*/</span></span><br><span class="line">        <span class="attribute">border</span>: <span class="number">10px</span> solid white;            <span class="comment">/*邊框設定*/</span></span><br><span class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">60px</span> black;          <span class="comment">/*邊框陰影設定*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">&quot;圖片網址&quot;</span>) no-repeat center center / cover;</span><br><span class="line">        <span class="attribute">display</span>: flex;                        <span class="comment">/*設定類型為flex*/</span></span><br><span class="line">        <span class="attribute">justify-content</span>: center;              <span class="comment">/*主軸置中*/</span></span><br><span class="line">        <span class="attribute">align-items</span>: center;                  <span class="comment">/*次軸置中*/</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>這時候我們網頁會長這樣↓<br><img src="https://i.imgur.com/8dkfei1.jpg"></p>
+<hr>
+<p>調整表單區域，設定寬度並置中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">400px</span>;                     <span class="comment">/*設定表單寬度*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.login</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;                    <span class="comment">/*設定類型為flex*/</span></span><br><span class="line">    <span class="attribute">justify-content</span>: center;          <span class="comment">/*主軸置中*/</span></span><br><span class="line">    <span class="attribute">align-items</span>: center;              <span class="comment">/*次軸置中*/</span></span><br><span class="line">    <span class="attribute">color</span>: white;                     <span class="comment">/*文字顏色*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在這邊有加入一個CSS屬性，模糊濾鏡處理<code>backdrop-filter: blur(5px);</code><br>在這裡有個問題就是我使用safari的時候無法正常顯示模糊效果但chrome就可以，<br>上網查詢了一下之後加入了<code>-webkit-backdrop-filter: blur(5px);</code>才能正常在safari上顯示，<br>應該是瀏覽器支援語法差異。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.login</span>&#123;</span><br><span class="line">        -webkit-backdrop-<span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">5px</span>);</span><br><span class="line">        backdrop-<span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">5px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這時候我們網頁會長這樣↓<br><img src="https://i.imgur.com/mFoztju.jpg"></p>
+<p>接下來我們可以先將需要調整的區域列出來，方便後續微調。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-tag">h2</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.group</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-tag">label</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-tag">input</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.btn-group</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.btn</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>我們將帳號密碼設為上下排列並美化一下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-tag">input</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;                    <span class="comment">/*設定寬度撐開容器*/</span></span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#aaa</span>;         <span class="comment">/*邊框及顏色設定*/</span></span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">5px</span>;             <span class="comment">/*圓角設定*/</span></span><br><span class="line">        <span class="attribute">line-height</span>: <span class="number">3</span>;                 <span class="comment">/*輸入欄位行高*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.form</span> <span class="selector-tag">label</span>&#123;                        <span class="comment">/*帳號、密碼行高*/</span></span><br><span class="line">        <span class="attribute">line-height</span>: <span class="number">2</span>;                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這時候我們網頁會長這樣↓<br><img src="https://i.imgur.com/r4EqxyI.jpg"></p>
+<p>微調一下間距</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.group</span>&#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;                <span class="comment">/*輸入欄位下方間距*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-tag">h2</span>&#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;                <span class="comment">/*標題下方間距*/</span></span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">20px</span>;               <span class="comment">/*美化線與標題間距*/</span></span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid white;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>現在網頁長這樣↓<br><img src="https://i.imgur.com/Htc7yiW.jpg"></p>
+<hr>
+<p>接著調整一下按鈕</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.btn-group</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">0</span>;                    <span class="comment">/*取消按鈕中間分隔*/</span></span><br><span class="line">&#125;</span><br><span class="line">    <span class="selector-class">.form</span> <span class="selector-class">.btn</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">20px</span>;                 <span class="comment">/*按鈕字型大小*/</span></span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">5px</span>;              <span class="comment">/*圓角*/</span></span><br><span class="line">        <span class="attribute">border</span>: none;                    <span class="comment">/*取消邊框*/</span></span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#CECEFF</span>;       <span class="comment">/*設定背景色*/</span></span><br><span class="line">        <span class="attribute">width</span>: <span class="number">190px</span>;                    <span class="comment">/*寬度設定(記得扣掉間距)*/</span></span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">0</span>;                 <span class="comment">/*間距*/</span></span><br><span class="line">        <span class="attribute">color</span>: white;                    <span class="comment">/*字體顏色*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>現在網頁長這樣↓<br><img src="https://i.imgur.com/0sS5uZU.jpg"></p>
+<p>將按鈕分開(設定間距)，這邊有用到一個CSS選取器：</p>
+<p><code>『+』號選取器</code>：選擇緊跟在對象 A 同層後方的 B </p>
+<p>所以在這個例子就是只選擇第二個btn來增加左方間距。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.btn</span> + <span class="selector-class">.btn</span>&#123;</span><br><span class="line">        <span class="attribute">margin-left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>現在網頁長這樣↓<br><img src="https://i.imgur.com/Mwzr7dI.jpg"></p>
+<p>調整按鈕上方間距</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.btn-group</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">50px</span>;              <span class="comment">/*按鈕上方顏色*/</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>現在網頁長這樣↓<br><img src="https://i.imgur.com/MQSiSp8.jpg"></p>
+<p>到這邊就大致完成了，接下來最後就是將字體加入<code>label</code>以及按鈕中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.form</span> <span class="selector-tag">label</span>&#123;</span><br><span class="line">        <span class="attribute">line-height</span>: <span class="number">2</span>;</span><br><span class="line">        <span class="attribute">font-family</span>: <span class="string">&#x27;Noto Sans TC&#x27;</span>, sans-serif; <span class="comment">/*加入字體*/</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.form</span> <span class="selector-class">.btn</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">        <span class="attribute">border</span>: none;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="number">#CECEFF</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">190px</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">color</span>: white;</span><br><span class="line">        <span class="attribute">font-family</span>: <span class="string">&#x27;Noto Sans TC&#x27;</span>, sans-serif; <span class="comment">/*加入字體*/</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最終修改完成↓</p>
+<p><img src="https://i.imgur.com/bFJvVB7.jpg"></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/11/12/%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92%E2%88%92%E9%80%9A%E7%94%A8%E6%A9%AB%E5%BC%8F%E7%89%88%E9%9D%A2/">
+        <span class="nav-arrow">← </span>
+        
+          金魚切版練習 − 通用橫式版面
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/11/17/%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92%E2%88%92%E6%97%8B%E8%BD%89%E6%8B%BC%E6%8E%A5%E6%96%B9%E5%A1%8A/">
+        
+          金魚切版練習−旋轉拼接方塊
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="nav">none</ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2020/11/15/ 金魚切版練習−登入表單/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

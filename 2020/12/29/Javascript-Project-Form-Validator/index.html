@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript Project - Form Validator | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript Project - Form Validator</h2>
+  <p class="post-date">2020-12-29</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Form-Validator-表單檢查器實做筆記"><a href="#Form-Validator-表單檢查器實做筆記" class="headerlink" title="Form Validator 表單檢查器實做筆記"></a>Form Validator 表單檢查器實做筆記</h1><ul>
+<li><a href="#HTML">1. HTML</a></li>
+<li><a href="#CSS">2. CSS</a></li>
+<li><a href="#Javascript-Part-1---if-%E8%BF%B4%E5%9C%88%E5%AF%AB%E6%B3%95">3. Javascript Part 1 - if 迴圈寫法</a></li>
+<li><a href="#Javascript-Part-2---%E9%87%8D%E6%A7%8B-refactor-%E5%8F%8A%E9%A9%97%E8%AD%89">4. Javascript Part 2 - 重構 refactor 及驗證</a></li>
+<li><ul>
+<li><a href="#checkRequired%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><code>checkRequired</code>驗證函式</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#getFieldName%E5%8B%95%E6%85%8B%E6%93%B7%E5%8F%96%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF%E5%8D%80%E5%A1%8A%E5%90%8D%E7%A8%B1%E5%87%BD%E5%BC%8F"><code>getFieldName</code>動態擷取錯誤訊息區塊名稱函式</a></li>
+</ul>
+</li>
+<li><a href="#Javascript-Part-3---%E9%95%B7%E5%BA%A6%E3%80%81Email%E5%8F%8A%E5%AF%86%E7%A2%BC%E7%9B%B8%E7%AC%A6%E9%A9%97%E8%AD%89">5. Javascript Part 3 - 長度、Email及密碼相符驗證</a></li>
+<li><ul>
+<li><a href="#checkLength%E8%BC%B8%E5%85%A5%E8%B3%87%E6%96%99%E9%95%B7%E5%BA%A6%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><code>checkLength</code>輸入資料長度驗證函式</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#checkEmailEmail%E6%A0%BC%E5%BC%8F%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><code>checkEmail</code>Email格式驗證函式</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#checkPasswordMatch%E5%AF%86%E7%A2%BC%E7%9B%B8%E7%AC%A6%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><code>checkPasswordMatch</code>密碼相符驗證函式</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>HTML的部分沒什麼特別的，基本上是標準的表單結構。<br>錯誤訊息的部分用<code>small</code>標籤進行製作。</p>
+<p>影片有提到幾個VSCODE的快捷鍵我個人覺得蠻實用，紀錄一下。</p>
+<ul>
+<li><strong>shift+option+↓：快速複製並貼上選取區塊</strong></li>
+<li><strong>shift+滑鼠或觸控板選取：多重選取</strong></li>
+<li><strong>ctrl+d：選取下一段相同字串</strong></li>
+</ul>
+<p>擷取部分程式碼：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;style.css&quot;&gt;</span><br><span class="line">    &lt;title&gt;Form Validator&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;form id&#x3D;&quot;form&quot; class&#x3D;&quot;form&quot;&gt;</span><br><span class="line">            &lt;h2&gt;Register with Us&lt;&#x2F;h2&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;form-control&quot;&gt;</span><br><span class="line">                &lt;label for&#x3D;&quot;username&quot;&gt;Username&lt;&#x2F;label&gt;</span><br><span class="line">                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; placeholder&#x3D;&quot;Enter username&quot;&gt;</span><br><span class="line">                &lt;small&gt;Error message&lt;&#x2F;small&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;script.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt; </span><br></pre></td></tr></table></figure>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>CSS的部分，開頭一樣是選擇需要的字型，利用<code>google fonts</code>網頁<br>這部分的重點有兩個：</p>
+<ul>
+<li><p>這裡有用到在原有的CSS融入了變數的形式，讓維護或修改時更方便並迅速。<br>將兩個顏色<code>success-color</code>跟<code>error-color</code>設為變數，<br>之後需要的時候只要利用<code>var()</code>填入變數就可以使用。</p>
+</li>
+<li><p>再來是將<code>small</code>標籤的錯誤訊息設為隱藏，利用的是<code>visibility: hidden;</code><br>這邊稍微說明一下<code>visibility: hidden;</code>只是不會顯示在畫面上，但實際的位置(空間)不會消失。<br>而如果使用的是<code>display: none</code>則是連這個標籤的位置(空間)都會消失。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --success-<span class="attribute">color</span>:<span class="number">#2ecc71</span>;</span><br><span class="line">    --error-<span class="attribute">color</span>:<span class="number">#e74c3c</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.form-control</span><span class="selector-class">.success</span> <span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="built_in">var</span>(--success-color);    <span class="comment">/*顏色使用變數*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.form-control</span><span class="selector-class">.error</span> <span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="built_in">var</span>(--error-color);      <span class="comment">/*顏色使用變數*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.form-control</span> small&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--error-color);             <span class="comment">/*顏色使用變數*/</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;                    <span class="comment">/*錯誤訊息隱藏*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.form-control</span><span class="selector-class">.error</span> small&#123;                 </span><br><span class="line">    <span class="attribute">visibility</span>: visible;                   <span class="comment">/*錯誤訊息顯示*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Javascript-Part-1-if-迴圈寫法"><a href="#Javascript-Part-1-if-迴圈寫法" class="headerlink" title="Javascript Part 1 - if 迴圈寫法"></a>Javascript Part 1 - if 迴圈寫法</h2><p>這邊影片先使用了if迴圈的寫法，但只有驗證是否輸入字串和email格式。<br>利用if迴圈+兩個函式<code>showSuccess</code>跟<code>showError</code>來判斷是否有輸入字串。</p>
+<p>首先先宣告變數，利用<code>getElementById()</code>這個方法來取得html內的元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> form = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;form&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> username = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;username&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> email = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;email&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> password = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;password&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> password2 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;password2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>接著我們先註冊一個事件<code>submit</code>，<br>這邊的<code>e.preventDefault();</code>是用來停止預設的submit這個行為：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Eventlistener</span></span><br><span class="line">form.addEventListener(<span class="string">&#x27;submit&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; <span class="comment">//註冊事件</span></span><br><span class="line">    e.preventDefault();                       <span class="comment">//停止預設行為</span></span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+<p>接下來做我們需要的函式<code>showSuccess</code>跟<code>showError</code></p>
+<ul>
+<li>這兩個函式的主要功能是：</li>
+<li><ul>
+<li>讓我們在使用者輸入表單並按下<code>submit</code>按鈕時可以變更<code>class</code>屬性的名稱，</li>
+</ul>
+</li>
+<li><ul>
+<li>讓css(顏色及是否顯示)和我們後面設定的錯誤訊息(message)可以顯示在畫面上。</li>
+</ul>
+</li>
+</ul>
+<p>首先一樣先宣告變數，<br>這邊用到的<code>input.parentElement</code>可以直接取得<code>HTML</code>裡的<code>input</code>的上層節點<code>form-control</code>這個<code>div</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;form-control&quot;&gt;        &#x2F;&#x2F;這個就是input的parentElement。</span><br><span class="line">    &lt;label for&#x3D;&quot;username&quot;&gt;Username&lt;&#x2F;label&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; placeholder&#x3D;&quot;Enter username&quot;&gt;</span><br><span class="line">    &lt;small&gt;Error message&lt;&#x2F;small&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>接下來操作<code>class</code>的名稱改為<code>form-control error</code>。</p>
+<p>再來宣告一個變數<code>small</code>，因為我們想要顯示的不是原來的文字，而是我們設定的訊息，<br>做法是修改<code>small</code>內文<code>innertext</code>改為<code>message</code>這個參數。</p>
+<p>而<code>showSuccess</code>的部分不需要顯示錯誤訊息，只需要操作class名稱來讓css可以正確顯示顏色。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Show input error message</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showError</span>(<span class="params">input, message</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> formControl = input.parentElement;            <span class="comment">//選取上層節點</span></span><br><span class="line">    formControl.className = <span class="string">&#x27;form-control error&#x27;</span>;       <span class="comment">//操作class名稱</span></span><br><span class="line">    <span class="keyword">const</span> small = formControl.querySelector(<span class="string">&#x27;small&#x27;</span>);   <span class="comment">//選取small標籤</span></span><br><span class="line">    small.innerText = message;                          <span class="comment">//修改small標籤內文字</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Show success outline</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showSuccess</span>(<span class="params">input</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> formControl = input.parentElement;</span><br><span class="line">    formControl.className = <span class="string">&#x27;form-control success&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下來我們在上面註冊好的事件內就可以利用這兩個函式來進行操作。<br>以下是Username部分程式碼，之後只要複製並修改參數便可以。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">form.addEventListener(<span class="string">&#x27;submit&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(username.value === <span class="string">&#x27;&#x27;</span>) &#123;   </span><br><span class="line">        showError(username, <span class="string">&#x27;Username is required&#x27;</span>);     </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        showSuccess(username);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//當username的值等於空白</span></span><br><span class="line">    <span class="comment">//呼叫showError函式並顯示錯誤訊息&#x27;Username is required&#x27;</span></span><br><span class="line">    <span class="comment">//否則呼叫showSuccess函式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下來是Email格式驗證，這邊影片是直接用別人寫好的驗證函式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check email is valid</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidEmail</span>(<span class="params">email</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> re = <span class="regexp">/^(([^&lt;&gt;()[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]&#123;2,&#125;))$/</span>;</span><br><span class="line">    <span class="keyword">return</span> re.test(<span class="built_in">String</span>(email).toLowerCase());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但這邊的if迴圈有多加一個判斷，顯示的錯誤訊息不同：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(email.value === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">        showError(email, <span class="string">&#x27;Email is required&#x27;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!isValidEmail(email.value))&#123;</span><br><span class="line">        showError(email, <span class="string">&#x27;Email is not valid&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        showSuccess(email);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//當username的值等於空白，呼叫showError函式並顯示錯誤訊息&#x27;Username is required&#x27;</span></span><br><span class="line"><span class="comment">//當email的值不符合函式驗證，呼叫showError函式並顯示錯誤訊息&#x27;Username is not valid&#x27;</span></span><br><span class="line"><span class="comment">//否則呼叫showSuccess函式</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Javascript-Part-2-重構-refactor-及驗證"><a href="#Javascript-Part-2-重構-refactor-及驗證" class="headerlink" title="Javascript Part 2 - 重構 refactor 及驗證"></a>Javascript Part 2 - 重構 refactor 及驗證</h2><p>接下來我們將上述的程式碼加入更多驗證及重構，<br>這是因為過多的<code>if</code>迴圈會造成程式碼繁雜且難以修改和維護。</p>
+<p>影片中將事件內的迴圈判斷以函式方式重構，上一個部份的判斷是由多個if迴圈來進行。<br>這邊要調整為動態的方式，在<code>submit</code>後取得使用者輸入的值 → 進行判斷。</p>
+<p>首先在事件上先調整為利用<code>checkRequired</code>函式呼叫來進行操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Eventlistener</span></span><br><span class="line">form.addEventListener(<span class="string">&#x27;submit&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    checkRequired([username, email, password, password2]);</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+<p>另舉例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">checkRequired(username);</span><br><span class="line">checkRequired(email);</span><br><span class="line">checkRequired(password);</span><br><span class="line">checkRequired(password2);</span><br><span class="line"><span class="comment">//這樣的寫法的話，過多重複的呼叫，且在修改時也比較沒有彈性。</span></span><br></pre></td></tr></table></figure>
+<h3 id="checkRequired驗證函式"><a href="#checkRequired驗證函式" class="headerlink" title="checkRequired驗證函式"></a><code>checkRequired</code>驗證函式</h3><p>這邊用到的是<code>forEach</code>這個方法<code>Method</code>，對陣列中的每個元素執行一次函式。</p>
+<p>判斷式<code>if</code>利用回傳<code>input</code>的值<code>value</code>進行判斷。<br>這邊的<code>.trim()</code>方法是用來去除字串前後的空白。</p>
+<p>若輸入的值為空白，則呼叫<code>showError</code>函式，否則呼叫<code>showSuccess</code>函式。</p>
+<p>這邊的錯誤訊息一樣是利用函式<code>getFieldName</code>動態的擷取輸入區塊的名稱+上 <code>is required</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check required fields</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkRequired</span>(<span class="params">inputArr</span>) </span>&#123;</span><br><span class="line">    inputArr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>&#123;       <span class="comment">//對陣列中的每個元素執行一次函式。</span></span><br><span class="line">        <span class="keyword">if</span>(input.value.trim() === <span class="string">&#x27;&#x27;</span>)&#123;       <span class="comment">//透過回傳的值進行判斷</span></span><br><span class="line">            showError(input, <span class="string">`<span class="subst">$&#123;getFieldName(input)&#125;</span> is required`</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            showSuccess(input);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="getFieldName動態擷取錯誤訊息區塊名稱函式"><a href="#getFieldName動態擷取錯誤訊息區塊名稱函式" class="headerlink" title="getFieldName動態擷取錯誤訊息區塊名稱函式"></a><code>getFieldName</code>動態擷取錯誤訊息區塊名稱函式</h3><p>這邊的函式是用來擷取錯誤訊息區塊名稱，會回傳<code>input</code>的<code>id</code>並改為首字大寫。</p>
+<p>這邊有用到三種<code>method</code>：</p>
+<ol>
+<li><code>charAt(0)</code>：回傳字串中指定的一個字，0就是首字</li>
+<li><code>toUpperCase()</code>：轉換大寫</li>
+<li><code>slice(1)</code>：在這裡是用來切掉首字(0)而從第二個字母補上(1)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get fieldname</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFieldName</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> input.id.charAt(<span class="number">0</span>).toUpperCase() + input.id.slice(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-3-長度、Email及密碼相符驗證"><a href="#Javascript-Part-3-長度、Email及密碼相符驗證" class="headerlink" title="Javascript Part 3 - 長度、Email及密碼相符驗證"></a>Javascript Part 3 - 長度、Email及密碼相符驗證</h2><p>在這個部份我們會在事件上加上其他的驗證：<br>使用者及密碼長度<code>checkLength</code>，Email格式<code>checkEmail</code>以及密碼是否相符<code>checkPasswordMatch</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">form.addEventListener(<span class="string">&#x27;submit&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line"></span><br><span class="line">    checkRequired([username, email, password, password2]);</span><br><span class="line">    checkLength(username, <span class="number">3</span>, <span class="number">15</span>);</span><br><span class="line">    checkLength(password, <span class="number">8</span>, <span class="number">16</span>);</span><br><span class="line">    checkEmail(email);</span><br><span class="line">    checkPasswordMatch(password, password2);</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+<h3 id="checkLength輸入資料長度驗證函式"><a href="#checkLength輸入資料長度驗證函式" class="headerlink" title="checkLength輸入資料長度驗證函式"></a><code>checkLength</code>輸入資料長度驗證函式</h3><p>首先我們先確定好需要的長度範圍設定在呼叫函式的參數之中，以這個例子<br>使用者名稱是3-15位數，而密碼是8-16位數。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">checkLength(username, <span class="number">3</span>, <span class="number">15</span>);</span><br><span class="line">checkLength(password, <span class="number">8</span>, <span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+<p>函式的本體利用三個參數做比較來進行判斷，<br>輸入值的長度若小於<code>min</code>則呼叫<code>showError</code>並顯示長度需小於<code>min</code>的錯誤訊息。<br>輸入值的長度若大於<code>max</code>則呼叫<code>showError</code>並顯示長度需大於<code>max</code>的錯誤訊息。<br>否則呼叫<code>showSuccess</code><br>這邊有用到<code>.length</code>來找到輸入的值的長度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check input length</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkLength</span>(<span class="params">input, min, max</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(input.value.length &lt; min) &#123;</span><br><span class="line">        showError(input, <span class="string">`<span class="subst">$&#123;getFieldName(input)&#125;</span> must be at least <span class="subst">$&#123;min&#125;</span> characters`</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (input.value.length &gt; max) &#123;</span><br><span class="line">        showError(input, <span class="string">`<span class="subst">$&#123;getFieldName(input)&#125;</span> must be less than <span class="subst">$&#123;max&#125;</span> characters`</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        showSuccess(input);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="checkEmailEmail格式驗證函式"><a href="#checkEmailEmail格式驗證函式" class="headerlink" title="checkEmailEmail格式驗證函式"></a><code>checkEmail</code>Email格式驗證函式</h3><p>這邊一樣是使用網路上別人寫的函式，只是將函式名稱統一化，並加入判斷式和需顯示的錯誤訊息。<br>若輸入值與函式格式相符，則呼叫<code>showSuccess</code>函式。<br>若不相符，則呼叫<code>showError</code>函式並顯示錯誤訊息：Email格式不符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check email is valid</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkEmail</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> re = <span class="regexp">/^(([^&lt;&gt;()[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]&#123;2,&#125;))$/</span>;</span><br><span class="line">    <span class="keyword">return</span> re.test(<span class="built_in">String</span>(email).toLowerCase());</span><br><span class="line">    <span class="keyword">if</span>(re.test(input.value.trim())) &#123;</span><br><span class="line">        showSuccess(input);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        showError(input, <span class="string">&#x27;Email is not valid&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="checkPasswordMatch密碼相符驗證函式"><a href="#checkPasswordMatch密碼相符驗證函式" class="headerlink" title="checkPasswordMatch密碼相符驗證函式"></a><code>checkPasswordMatch</code>密碼相符驗證函式</h3><p>這邊是利用兩個位置輸入的值是否相等進行判斷，<br>不相等則呼叫<code>showError</code>函式，並顯示錯誤訊息：密碼不相符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check passwords match</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkPasswordMatch</span>(<span class="params">input1, input2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(input1.value !== input2.value) &#123;</span><br><span class="line">        showError(input2, <span class="string">&#x27;Passwords do not match&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/12/12/Javascript-Basic/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript Basic
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/01/05/Javascript-Project-Movie-Seat-Booking/">
+        
+          Javascript Project - Movie Seat Booking
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Form-Validator-%E8%A1%A8%E5%96%AE%E6%AA%A2%E6%9F%A5%E5%99%A8%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Form Validator 表單檢查器實做筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTML"><span class="toc-nav-text">HTML</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS"><span class="toc-nav-text">CSS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-1-if-%E8%BF%B4%E5%9C%88%E5%AF%AB%E6%B3%95"><span class="toc-nav-text">Javascript Part 1 - if 迴圈寫法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-2-%E9%87%8D%E6%A7%8B-refactor-%E5%8F%8A%E9%A9%97%E8%AD%89"><span class="toc-nav-text">Javascript Part 2 - 重構 refactor 及驗證</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#checkRequired%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">checkRequired驗證函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#getFieldName%E5%8B%95%E6%85%8B%E6%93%B7%E5%8F%96%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF%E5%8D%80%E5%A1%8A%E5%90%8D%E7%A8%B1%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">getFieldName動態擷取錯誤訊息區塊名稱函式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-3-%E9%95%B7%E5%BA%A6%E3%80%81Email%E5%8F%8A%E5%AF%86%E7%A2%BC%E7%9B%B8%E7%AC%A6%E9%A9%97%E8%AD%89"><span class="toc-nav-text">Javascript Part 3 - 長度、Email及密碼相符驗證</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#checkLength%E8%BC%B8%E5%85%A5%E8%B3%87%E6%96%99%E9%95%B7%E5%BA%A6%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">checkLength輸入資料長度驗證函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#checkEmailEmail%E6%A0%BC%E5%BC%8F%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">checkEmailEmail格式驗證函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#checkPasswordMatch%E5%AF%86%E7%A2%BC%E7%9B%B8%E7%AC%A6%E9%A9%97%E8%AD%89%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">checkPasswordMatch密碼相符驗證函式</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2020/12/29/Javascript-Project-Form-Validator/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      金魚切版練習−圖文互動卡片 | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>金魚切版練習−圖文互動卡片</h2>
+  <p class="post-date">2020-11-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10216684">金魚切版練習2鐵人賽網頁傳送門</a></p>
+<p>首先我們來看看實際做出來的畫面呈現↓<br><a target="_blank" rel="noopener" href="https://jessie1120.github.io/CSSprojects/goldfish_layouts/goldfish2.html">實作完成傳送門</a><br><img src="https://i.imgur.com/IevxUHK.png"></p>
+<p>可以看到有四張圖片，而當中的文字是會在你觸碰到圖片時顯現出來。</p>
+<hr>
+<p>首先我們先將其中一個圖片的區域做出來</p>
+<p>首先將html的基本架構做出來，加入一個用來把圖片以及文字放進去的區域，<code>&lt;div class=&quot;wrap&quot;&gt;</code> <code>/div&gt;</code>，接著在wrap裡面做一個容器item<code>&lt;div class=&quot;item&quot;&gt;</code> <code>&lt;div&gt;</code></p>
+<p>容器裡需要一張圖片，新增<code>&lt;img src=&quot;photo_link&quot;&gt;</code><br>接下來加入文字區域<code>&lt;div class=&quot;txt&quot;&gt;</code> <code>&lt;div&gt;</code>並在其中包含<code>&lt;h2&gt;</code> <code>&lt;p&gt;</code><br>請在文字區域自行填入標題及內文等等。</p>
+<p>示意圖↓<br><img src="https://i.imgur.com/iT0lizj.gif"></p>
+<ul>
+<li>如果vscode有裝emmet插件的話，直接利用指令 <code>div.class_name</code> 他就會幫你創建好一個含有class=””的div區塊了，新增含有id=””的區塊請使用<code>div#id_name</code>。</li>
+<li>假圖說明：這邊的圖片我是使用網路的假圖服務，加入連結後可以指定圖片大小及隨機，這樣就可以在練習時不用準備太多素材，直接放連結即可，網站<a target="_blank" rel="noopener" href="https://picsum.photos/">傳送門</a>。</li>
+</ul>
+<hr>
+<p>接下來就進入css部分<br>首先我們先創建一個<code>&lt;style type=&quot;txt/css&quot;&gt;</code> <code>&lt;/style&gt;</code>，這邊裡面的<code>type=&quot;txt/css&quot;</code>用意是告知瀏覽器以css方式讀取，有點像是html的宣告。</p>
+<p>接下來新增</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line"><span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line"><span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這一段主要是讓網頁的元素可以reset成沒有任何預設值<br>示意圖↓<br><img src="https://i.imgur.com/yKexrtQ.gif"></p>
+<hr>
+<p>接下來來設定各個區塊的css，加入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrap</span>&#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100%</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span>&#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">25%</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100%</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這邊是將整個wrap width設定成100%來符合寬度，因為我們要放四張圖片，所以包含圖片的item區塊設定成25%，最後將圖片設100%來符合大小。<br>示意圖↓<br><img src="https://i.imgur.com/AXtVOoO.gif"></p>
+<hr>
+<p>接下來加入文字區域的css定位，我們希望他在item容器的位置，所以加入一個<code>絕對定位</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item <span class="selector-class">.txt</span>&#123;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>並在item區域加入<code>相對定位</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item&#123;</span><br><span class="line"><span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/3gqrlaG.gif"></p>
+<p>後面加入一些文字區塊的設定<br>上下左右設為0<br>内距padding設20px<br>背景色為透明黑</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">item <span class="selector-class">.txt</span>&#123;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/Kh5uXVF.png"></p>
+<p>再來將標題及內文的部分調整成自己需要的大小及顏色</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">h2</span>&#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line">        </span><br><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">p</span>&#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line"><span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/CZqdnoS.png"></p>
+<hr>
+<p>再來是調整我們文字區域要顯示在容器中的排列方式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">item <span class="selector-class">.txt</span>&#123;</span><br><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">justify-content</span>: center;</span><br><span class="line"><span class="attribute">flex-direction</span>: column;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用flex-box方式排版</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: flex; <span class="comment">/*這會將排版方式改為flexbox*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">justify-content</span>: center; <span class="comment">/*這會讓文字區塊中的元素置中對齊*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex-direction</span>: column; <span class="comment">/*這會將排版方式改為直行排列*/</span></span><br></pre></td></tr></table></figure>
+<p>示意圖↓<br><img src="https://i.imgur.com/nuSfQwF.gif"></p>
+<hr>
+<p>再來我們做的是將標題及內文做字體的調整<br>這邊可以使用系統內建的字型去新增，但這邊是用了一個google字體的連結去載入<br>這邊提供<a target="_blank" rel="noopener" href="https://fonts.google.com/">google字型傳送門</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href&#x3D;&quot;https:&#x2F;&#x2F;fonts.googleapis.com&#x2F;css2?family&#x3D;Noto+Sans+TC:wght@100;500&amp;display&#x3D;swap&quot; rel&#x3D;&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>並設定font-family</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Noto Sans TC&#x27;</span>, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/MvFuTF9.png"></p>
+<p>接下來設定字體的粗細</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">h2</span>&#123;</span><br><span class="line"><span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">p</span>&#123;</span><br><span class="line"><span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示意圖↓<br><img src="https://i.imgur.com/g5cAzUS.gif"></p>
+<hr>
+<p>再來我們將下方的item區塊複製並修改成4個，<br>並將我們的四個item改為橫向排列</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrap</span>&#123;</span><br><span class="line"><span class="attribute">display</span>: flex;</span><br></pre></td></tr></table></figure>
+<p>這邊將”父元素”wrap改為flex之後便會以橫向方式排版</p>
+<p>示意圖↓<br><img src="https://i.imgur.com/UCtQxIB.gif"></p>
+<hr>
+<p>開始製作互動的部分，這次的效果是＂當觸碰到圖片時，會讓文字緩慢顯現出來。＂<br>首先我們在文字區域內新增一個透明度的設定，將它設為完全透明。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-class">.txt</span>&#123;</span><br><span class="line"><span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/CT3wqcc.png"></p>
+<p>接下來來製作互動的部分，碰到item區塊時觸發，文字區塊會變成完全不透明(也就是顯示出來)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.txt</span>&#123;</span><br><span class="line"><span class="attribute">opacity</span>: <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>並且在這個動作做一點效果，在實現透明到不透明的動作中，加入轉場時間 0.5秒</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-class">.txt</span>&#123;</span><br><span class="line"><span class="attribute">transition</span>: opacity .<span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/rVH7Vln.png"></p>
+<hr>
+<p>最後我們來做一個小動畫效果讓顯示出來的成品更精緻</p>
+<p>加入一個小區塊(要做成橫槓)，內容設為空白，並將此區域設為block屬性，width設為0%因為等下要讓他跑出來，如果你只需要單純的橫槓設為100%即可，高度設2px，並給他一個margin 上下10px左右0<br>顏色設為黃色或任何你喜歡的顏色。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">h2</span>:after&#123;</span><br><span class="line">content: <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="attribute">display</span>: block;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">0%</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">2px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line"><span class="attribute">background-color</span>: yellow;</span><br></pre></td></tr></table></figure>
+<p>接下來是動畫的部分，設定觸碰item時延遲顯示</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">h2</span>:after&#123;</span><br><span class="line">            width: <span class="number">100%</span>;</span><br></pre></td></tr></table></figure>
+<p>讓他可以從0跑到100的效果，類似進度條<br>並加入出現時間及延遲時間</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">h2</span>:after&#123;</span><br><span class="line">transition: width .<span class="number">5s</span> .<span class="number">3s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/swv6twF.png"></p>
+<p>這樣我們就完成了這次的切版實作：互動式圖文卡</p>
+<p><a target="_blank" rel="noopener" href="https://jessie2534.github.io/my-projects/goldfish2">實作傳送門</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/11/08/Git-%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9%E3%80%81%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9%E5%8F%8AGithub%E5%AF%A6%E4%BD%9C%E7%B7%B4%E7%BF%92/">
+        <span class="nav-arrow">← </span>
+        
+          Git 基礎介紹、常用指令介紹及Github實作練習
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/11/12/%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92%E2%88%92%E9%80%9A%E7%94%A8%E6%A9%AB%E5%BC%8F%E7%89%88%E9%9D%A2/">
+        
+          金魚切版練習 − 通用橫式版面
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="nav">none</ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2020/11/10/金魚切版練習−圖文互動卡片/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

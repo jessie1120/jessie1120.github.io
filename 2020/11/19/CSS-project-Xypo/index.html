@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      CSS project - Xypo | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>CSS project - Xypo</h2>
+  <p class="post-date">2020-11-19</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Xypo-網頁實作筆記"><a href="#Xypo-網頁實作筆記" class="headerlink" title="Xypo 網頁實作筆記"></a>Xypo 網頁實作筆記</h1><p><a target="_blank" rel="noopener" href="https://jessie1120.github.io/CSSprojects/Xypo/index.html">網頁傳送門</a></p>
+<p>會分為不同區塊或功能來製作網頁</p>
+<h2 id="Header-Section-頁首"><a href="#Header-Section-頁首" class="headerlink" title="Header Section (頁首)"></a>Header Section (頁首)</h2><p>首先先加入基本的html結構，但這次我們會使用css檔的引入來作為css的連結方式。<br><code>head</code>標籤中，加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;style.css&quot; type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>連結到<code>style.css</code>這個檔案，之後所有的css調整都會另外寫在這個檔案中。</p>
+<hr>
+<p>接下來是我們預設的html結構加上我們所需要的logo圖片以及內文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;style.css&quot; type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">    &lt;title&gt;Xypo-demo&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;section id&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;images&#x2F;logo.png&quot; class&#x3D;&quot;logo&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;header-text&quot;&gt;</span><br><span class="line">                &lt;h1&gt;The purpose is to&lt;br&gt;teach, bring learning to people&lt;&#x2F;h1&gt;</span><br><span class="line">                &lt;p&gt;(內文過長省略)&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;section&gt;</span><br></pre></td></tr></table></figure>
+<p>這時候我們的網頁實際是↓<br><img src="https://i.imgur.com/bLr6Ctr.png"></p>
+<p>接著我們先Reset CSS並加入背景圖</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">font-family</span>: sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#header</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;                                    <span class="comment">/*設定高度*/</span></span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">images/background.png</span>);     <span class="comment">/*加入背景圖片*/</span></span><br><span class="line">    <span class="attribute">background-position</span>: center;                      <span class="comment">/*置中*/</span></span><br><span class="line">    <span class="attribute">background-size</span>: cover;                           <span class="comment">/*填滿*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這時候我們的網頁實際是↓<br><img src="https://i.imgur.com/TfGY0sG.png"></p>
+<p>接下來加入按鈕及裝飾方塊</p>
+<p>加入裝飾方塊並設定後↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;square&quot;&gt;&lt;&#x2F;span&gt;                    &lt;!--裝飾方塊--&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.square</span>&#123;</span><br><span class="line">    <span class="comment">/*裝飾方塊微調*/</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#f67c92</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">15px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/ngh5Xs3.png"></p>
+<p>加入按鈕並設定樣式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class&#x3D;&quot;common-btn&quot;&gt;read more&lt;&#x2F;button&gt;   &lt;!--按鈕--&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.common-btn</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">18px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background</span>: transparent;        <span class="comment">/*背景透明化*/</span></span><br><span class="line">    <span class="attribute">outline</span>: none;                  <span class="comment">/*無底線*/</span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#f67c92</span>;      <span class="comment">/*邊框線條*/</span></span><br><span class="line">    <span class="attribute">font-weight</span>: bold;              <span class="comment">/*粗體*/</span></span><br><span class="line">    <span class="attribute">cursor</span>: pointer;                <span class="comment">/*點擊改變滑鼠指標*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>現在頁面長這樣↓<br><img src="https://i.imgur.com/MQUhvVM.png"></p>
+<p>調整文字區塊的排版</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="comment">/*設定左右間距*/</span></span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.logo</span>&#123;</span><br><span class="line">    <span class="comment">/*設定上方間距及寬度*/</span></span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.header-text</span>&#123;</span><br><span class="line">    <span class="comment">/*文字區塊限制寬度及保留上方間距*/</span></span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">350px</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">140px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="comment">/*字體大小調整*/</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">34px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.common-btn</span>&#123;</span><br><span class="line">    <span class="comment">/*按鈕微調*/</span></span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">18px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background</span>: transparent;        <span class="comment">/*背景透明化*/</span></span><br><span class="line">    <span class="attribute">outline</span>: none;                  <span class="comment">/*無底線*/</span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#f67c92</span>;      <span class="comment">/*邊框線設定*/</span></span><br><span class="line">    <span class="attribute">font-weight</span>: bold;              <span class="comment">/*字體粗細*/</span></span><br><span class="line">    <span class="attribute">cursor</span>: pointer;                <span class="comment">/*點擊按鈕改變指標*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="comment">/*內文字體微調*/</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>經過微調後文字區塊會長這樣↓<br><img src="https://i.imgur.com/DmlRjzS.png"></p>
+<p>加入按鈕間距，讓畫面不會太壅擠。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header-text</span> <span class="selector-tag">button</span>&#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>實際↓<br><img src="https://i.imgur.com/H2dvKie.png"></p>
+<p>最後加入裝飾線條來讓畫面更豐富</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;line&quot;&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;line-1&quot;&gt;&lt;&#x2F;span&gt;&lt;br&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;line-2&quot;&gt;&lt;&#x2F;span&gt;&lt;br&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;line-3&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.line-1</span>&#123;</span><br><span class="line">    <span class="comment">/*調整為方塊*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#f67c92</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.line-2</span>&#123;</span><br><span class="line">    <span class="comment">/*長線條*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">80px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#f67c92</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.line-3</span>&#123;</span><br><span class="line">    <span class="comment">/*短線條*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#f67c92</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.line</span>&#123;</span><br><span class="line">    <span class="comment">/*行高*/</span></span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Header區塊到這邊就完成了↓<br><img src="https://i.imgur.com/SqHJ2EW.png"></p>
+<h2 id="SideNav-側邊欄"><a href="#SideNav-側邊欄" class="headerlink" title="SideNav (側邊欄)"></a>SideNav (側邊欄)</h2><p>首先我們先加入我們需要的html結構</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav id&#x3D;&quot;sideNav&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;HOME&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;ABOUT US&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;    </span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;FEATURES&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;COURSES&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;OFFER&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;CONTACT&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure>
+<p>我們需要的邊欄文字目前會呈現↓<br><img src="https://i.imgur.com/0ikFkmt.png"></p>
+<p>接著做css調整讓邊欄文字出現在我們需要的右側，這邊使用了<code>id選取器 #</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#sideNav</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">250px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="attribute">position</span>: fixed;          <span class="comment">/*固定在畫面上，隨著頁面捲動也會跟著動*/</span></span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#f67c92</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">2</span>;               <span class="comment">/*設定圖層為最上方*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>現在會長這樣↓<br><img src="https://i.imgur.com/Euk4GNV.png"></p>
+<p>先調整一下列表的樣式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">ul</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">50px</span> <span class="number">20px</span>;        <span class="comment">/*調整每項文字間距*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">ul</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;    <span class="comment">/*取消底線*/</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;              <span class="comment">/*設定白色*/</span></span><br></pre></td></tr></table></figure>
+<p>現在側邊欄變得好看一些↓<br><img src="https://i.imgur.com/25DLYnQ.png"></p>
+<p>接著我們來加入一個小小的Menu按鈕並進行css調整定位及樣式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;images&#x2F;menu.png&quot; id&#x3D;&quot;menuBtn&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#menuBtn</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">position</span>: fixed;        <span class="comment">/*固定在畫面上*/</span></span><br><span class="line">    <span class="attribute">right</span>: <span class="number">65px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">35px</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">2</span>;             <span class="comment">/*設定圖層為最上方*/</span></span><br><span class="line">    <span class="attribute">cursor</span>: pointer;        <span class="comment">/*點擊按鈕改變指標*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按鈕加入後↓<br><img src="https://i.imgur.com/3ZIvzMn.png"></p>
+<p>但我們現在不能讓側邊欄整個擋住頁面，所以我們來做個小小的效果。<br>這邊用到的是非常簡單的javascript↓</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        &lt;!--首先我們先利用之前設定好的id來宣告--&gt;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> menuBtn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;menuBtn&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> sideNav = <span class="built_in">document</span>.getElementById(<span class="string">&quot;sideNav&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        &lt;!--我們先將前面的側邊欄位置改為-250px，讓它消失在畫面上--&gt;</span><br><span class="line">        &lt;!--再來設定只有點擊時側邊欄從-250px出現到0px的位置--&gt;</span><br><span class="line">        </span><br><span class="line">        sideNav.style.right = <span class="string">&quot;-250px&quot;</span></span><br><span class="line">        menuBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(sideNav.style.right == <span class="string">&quot;-250px&quot;</span>)&#123;</span><br><span class="line">                sideNav.style.right = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    sideNav.style.right = <span class="string">&quot;-250px&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>這樣做出的效果就會是一個可以彈出的側邊欄了↓<br><img src="https://i.imgur.com/MTs9uJQ.gif"></p>
+<hr>
+<ul>
+<li><h2 id="About-Us區塊"><a href="#About-Us區塊" class="headerlink" title="About Us區塊"></a>About Us區塊</h2></li>
+</ul>
+<p>這個區塊是相對簡單的區塊，只要設定好所需版塊的大小，放進文字及圖片即可<br>首先我們一樣放入我們需要的結構並命名標籤</p>
+<p>左側我們要放入背景圖，右側要加入文字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;section id&#x3D;&quot;about&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;about-left-col&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;images&#x2F;about.png&quot;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;about-right-col&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;about-text&quot;&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;section&gt;</span><br></pre></td></tr></table></figure>
+<p>先做一些CSS區塊的設定：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#about</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">100px</span> <span class="number">0</span>;        <span class="comment">/*保留與上方頁面空間*/</span></span><br><span class="line">    <span class="attribute">display</span>: flex;           <span class="comment">/*屬性使用flex*/</span></span><br><span class="line">    <span class="attribute">align-items</span>: center;     <span class="comment">/*置中*/</span></span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;         <span class="comment">/*換行*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.about-left-col</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;         <span class="comment">/*將欄位設定為空間的一半，以這邊是寬度*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.about-left-col</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;             <span class="comment">/*符合大小*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.about-right-col</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;         <span class="comment">/*將欄位設定為空間的一半，以這邊是寬度*/</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候左側應該會有一半的頁面是剛剛加入的背景圖↓<br><img src="https://i.imgur.com/jCphgTq.png"></p>
+<p>現在加入右側的內文及調整文字樣式，<br>一樣會加入上面做過的裝飾方塊及線條裝飾，可以讓網頁更有整體感。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;about-right-col&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;about-text&quot;&gt;</span><br><span class="line">                &lt;h1&gt;About Us&lt;&#x2F;h1&gt;</span><br><span class="line">                &lt;span class&#x3D;&quot;square&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">                &lt;p&gt;(內文過長省略)&lt;&#x2F;p&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">                &lt;h2&gt;(&quot;標題2&quot;)&lt;&#x2F;h2&gt;</span><br><span class="line">                &lt;h3&gt;----Abigail Adams&lt;&#x2F;h3&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;line&quot;&gt;</span><br><span class="line">                    &lt;span class&#x3D;&quot;line-1&quot;&gt;&lt;&#x2F;span&gt;&lt;br&gt;</span><br><span class="line">                    &lt;span class&#x3D;&quot;line-2&quot;&gt;&lt;&#x2F;span&gt;&lt;br&gt;</span><br><span class="line">                    &lt;span class&#x3D;&quot;line-3&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>CSS調整的部分主要是以文字區塊為主</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.about-right-col</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: right;           <span class="comment">/*文字靠右對齊*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.about-text</span>&#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">500px</span>;            <span class="comment">/*最大寬度*/</span></span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">100px</span>;         <span class="comment">/*保留右方間距*/</span></span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.about-text</span> <span class="selector-tag">h2</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">50px</span> <span class="number">0</span> <span class="number">10px</span>;         <span class="comment">/*上下間距*/</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">28px</span>;             <span class="comment">/*字體大小*/</span></span><br><span class="line">    <span class="attribute">font-style</span>: italic;          <span class="comment">/*字體樣式*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.about-text</span> <span class="selector-tag">h3</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-style</span>: italic;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#797979</span>;              <span class="comment">/*字體顏色*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>實際做完大概會是這樣，裝飾方塊跟線條直接複製上面的就可以了↓<br><img src="https://i.imgur.com/nqhY2ss.png"></p>
+<h2 id="Features-Section"><a href="#Features-Section" class="headerlink" title="Features Section"></a>Features Section</h2><p>首先我們加入html結構，這邊我們要做的是一個三欄的樣式，分別各有圖片及文字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;section id&#x3D;&quot;features&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;feature-row&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;feature-col&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;images&#x2F;pic-1.png&quot;&gt;</span><br><span class="line">                &lt;h4&gt;Learn Anywhere&lt;&#x2F;h4&gt;</span><br><span class="line">                &lt;p&gt;Switch between your computer, tablet or mobile device&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;feature-col&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;images&#x2F;pic-2.png&quot;&gt;</span><br><span class="line">                &lt;h4&gt;Expert Teachers&lt;&#x2F;h4&gt;</span><br><span class="line">                &lt;p&gt;Learn from industry experts who are passionate ...&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;feature-col&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;images&#x2F;pic-3.png&quot;&gt;</span><br><span class="line">                &lt;h4&gt;Unlimted Access&lt;&#x2F;h4&gt;</span><br><span class="line">                &lt;p&gt;Choose what you&#39;d like to learn from ...&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">         &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;section&gt;</span><br></pre></td></tr></table></figure>
+<p>做完之後這個區塊長這樣↓<br><img src="https://i.imgur.com/gtQJNG9.png"></p>
+<p>我們來調整一下圖片的大小以及文字的間距讓畫面更合理一點。</p>
+<p><code>justify-content: space-around</code>這個指令是flex布局的一種，使用時會長這樣↓</p>
+<p><img src="https://i.imgur.com/sjo5XWT.png"></p>
+<p>每個小方塊之間與父容器有間隔，但小方塊與父容器之間的間隔是小方塊彼此間隔的一半。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#feature</span>&#123;</span><br><span class="line">    <span class="comment">/*保留上下間距*/</span></span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.feature-row</span>&#123;</span><br><span class="line">    <span class="comment">/*設定寬度並置中*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">80%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-around;    <span class="comment">/*這邊是flex屬性的布局方式，請看上方說明*/</span></span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;                  <span class="comment">/*換行*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.feature-col</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">25%</span>;                  <span class="comment">/*設定各區塊寬度*/</span></span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.feature-col</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;                     <span class="comment">/*圖片縮小*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.feature-col</span> <span class="selector-tag">h4</span>&#123;</span><br><span class="line">    <span class="comment">/*文字間距及字體設定*/</span></span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">400</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>調整完後↓<br><img src="https://i.imgur.com/gUP8VlT.png"></p>
+<p>接下來我們加入一個按鈕還有之前用過的裝飾線</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;feature-btn&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;line&quot;&gt;</span><br><span class="line">                    &lt;span class&#x3D;&quot;line-1&quot;&gt;&lt;&#x2F;span&gt;&lt;br&gt;</span><br><span class="line">                    &lt;span class&#x3D;&quot;line-2&quot;&gt;&lt;&#x2F;span&gt;&lt;br&gt;</span><br><span class="line">                    &lt;span class&#x3D;&quot;line-3&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;button class&#x3D;&quot;common-btn&quot;&gt;Start Free Trial&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>現在頁面更豐富了↓<br><img src="https://i.imgur.com/n2KO0c9.png"></p>
+<p>不過間距還是要微調一下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.feature-btn</span>&#123;</span><br><span class="line">    <span class="comment">/*按鈕調整*/</span></span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">80px</span> auto <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: flex-end;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.feature-btn</span> <span class="selector-class">.line</span>&#123;</span><br><span class="line">    <span class="comment">/*因為線條所在區域在右側所以要靠右對齊*/</span></span><br><span class="line">    <span class="attribute">text-align</span>: right;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">25px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>調整後↓<br><img src="https://i.imgur.com/fG7iXRj.png"></p>
+<h2 id="Courses-Section-amp-Offer-Section"><a href="#Courses-Section-amp-Offer-Section" class="headerlink" title="Courses Section &amp; Offer Section"></a>Courses Section &amp; Offer Section</h2><p>首先我們一樣加入html結構，這邊一樣是一個兩欄的布局，但跟About Us區塊剛好配置相反。<br>所以我們這次在右側加入背景圖，而左側是文字區塊。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;section id&#x3D;&quot;courses&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container course-row&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;course-left-col&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;course-text&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;course-right-col&quot;&gt;</span><br><span class="line">                &lt;img src&#x3D;&quot;images&#x2F;course.png&quot;&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;section&gt;</span><br></pre></td></tr></table></figure>
+
+<p>目前左側區塊尚未設定所以只會顯示圖片↓<br><img src="https://i.imgur.com/0mmnPF8.png"></p>
+<p>我們加入左側區塊的設定讓他撐開空間</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#courses</span>&#123;</span><br><span class="line">    <span class="comment">/*保留上方空間*/</span></span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">100px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.course-row</span>&#123;</span><br><span class="line">    <span class="comment">/*設定flex*/</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.course-right-col</span>&#123;</span><br><span class="line">    <span class="comment">/*兩側皆為50%*/</span></span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.course-right-col</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="comment">/*圖片填滿*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.course-left-col</span>&#123;</span><br><span class="line">    <span class="comment">/*兩側皆為50%*/</span></span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br></pre></td></tr></table></figure>
+
+<p>這時候即使我們還沒有加入文字，也已經將空間做出來了↓<br><img src="https://i.imgur.com/Pg9P79w.png"></p>
+<p>接下來正式加入內文並設定文字區塊的css，一樣會用到之前做過的按鈕及裝飾線。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.course-text</span>&#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">350px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.course-text</span> <span class="selector-tag">button</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">30px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/lOmqpOy.png"></p>
+<p>這樣這個區塊就完成了，那下一個區塊因為跟About Us的配置是相同的，直接複製微調就可以了。</p>
+<p><img src="https://i.imgur.com/YkQWHtI.png"></p>
+<p>調整內文及間距後↓</p>
+<p><img src="https://i.imgur.com/nI8jvqY.png"></p>
+<h2 id="Contact-Section"><a href="#Contact-Section" class="headerlink" title="Contact Section"></a>Contact Section</h2><p>接下來我們做的頁面一樣是兩欄式配置，但左側會改為表單樣式紀錄聯絡資訊。</p>
+<p>新增html結構及基本css設定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;section id&#x3D;&quot;contact&quot;&gt;</span><br><span class="line">     &lt;div class&#x3D;&quot;container contact-row&quot;&gt;</span><br><span class="line">         &lt;div class&#x3D;&quot;contact-left-col&quot;&gt;</span><br><span class="line">             &lt;h1&gt;Sign Up to join our&lt;br&gt;learning community&lt;&#x2F;h1&gt;</span><br><span class="line">             &lt;form&gt;</span><br><span class="line">                 &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Enter Name&quot;&gt;</span><br><span class="line">                 &lt;input type&#x3D;&quot;email&quot; placeholder&#x3D;&quot;Enter Email&quot;&gt;</span><br><span class="line">                 &lt;input type&#x3D;&quot;password&quot; placeholder&#x3D;&quot;Enter Password&quot;&gt;</span><br><span class="line">                 &lt;div class&#x3D;&quot;btn-box&quot;&gt;</span><br><span class="line">                    &lt;button class&#x3D;&quot;common-btn&quot;&gt;Sign Up&lt;&#x2F;button&gt;</span><br><span class="line">                    &lt;button class&#x3D;&quot;common-btn&quot;&gt;Start Free Trial&lt;&#x2F;button&gt;</span><br><span class="line">                 &lt;&#x2F;div&gt;</span><br><span class="line">             &lt;&#x2F;form&gt;</span><br><span class="line">         &lt;&#x2F;div&gt;</span><br><span class="line">         &lt;div class&#x3D;&quot;contact-right-col&quot;&gt;</span><br><span class="line">             &lt;img src&#x3D;&quot;images&#x2F;contact.png&quot;&gt;</span><br><span class="line">         &lt;&#x2F;div&gt;</span><br><span class="line">     &lt;&#x2F;div&gt;</span><br><span class="line"> &lt;&#x2F;section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.contact-row</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.contact-left-col</span>,<span class="selector-class">.contact-right-col</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.contact-right-col</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/uQvX7hO.png"></p>
+<p>接著微調表單樣式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">form</span>&#123;</span><br><span class="line">    <span class="comment">/*限制寬度及調整間距*/</span></span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">350px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">30px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">form</span> <span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;                <span class="comment">/*填滿*/</span></span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">12px</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">outline</span>: none;              <span class="comment">/*取消邊框內建線條*/</span></span><br><span class="line">    <span class="attribute">box-shadow</span>: none;           <span class="comment">/*取消陰影*/</span></span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;     <span class="comment">/*自動扣除間距尺寸*/</span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#fab3c4</span>;  <span class="comment">/*設定邊框樣式*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/8MqvQzQ.png"></p>
+<p>再來調整按鈕，這邊的按鈕就跟上面不同，所以要選擇這兩個特定的按鈕。</p>
+<p>這邊又有用到另一個flex的布局屬性：<code>justify-content: space-between</code><br><img src="https://i.imgur.com/ulq0oJO.png"></p>
+<p>每個小方塊擁有相同的間隔，但與父容器之間沒有間隔。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn-box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.btn-box</span> <span class="selector-tag">button</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">48%</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">18px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>調整後↓<br><img src="https://i.imgur.com/W5KFA9C.png"></p>
+<p>最後一樣加入裝飾線條↓<br><img src="https://i.imgur.com/StfcsXP.png"></p>
+<h2 id="Footer-Section"><a href="#Footer-Section" class="headerlink" title="Footer Section"></a>Footer Section</h2><p>最後我們來做頁尾，這邊的基本架構也是兩欄式的版面，只是左右分別用很多小區塊來呈現。</p>
+<p>我們分成左右兩欄來做，左側是許多文字小區塊搭配，右側則用logo圖片加上文字。</p>
+<p>左側的結構大致長這樣↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;footer-left-col&quot;&gt;</span><br><span class="line">                     &lt;div class&#x3D;&quot;footer-links&quot;&gt;</span><br><span class="line">                         &lt;div class&#x3D;&quot;link-title&quot;&gt;</span><br><span class="line">                            &lt;h4&gt;Product&lt;&#x2F;h4&gt;</span><br><span class="line">                            &lt;small&gt;Our Plan&lt;&#x2F;small&gt;&lt;br&gt;</span><br><span class="line">                            &lt;small&gt;Free Trial&lt;&#x2F;small&gt;</span><br><span class="line">                         &lt;&#x2F;div&gt;</span><br><span class="line">                         &lt;div class&#x3D;&quot;link-title&quot;&gt;</span><br><span class="line">                            &lt;h4&gt;About Us&lt;&#x2F;h4&gt;</span><br><span class="line">                            &lt;small&gt;Request Demo&lt;&#x2F;small&gt;&lt;br&gt;</span><br><span class="line">                            &lt;small&gt;FAQs&lt;&#x2F;small&gt;</span><br><span class="line">                         &lt;&#x2F;div&gt;</span><br><span class="line">                         &lt;div class&#x3D;&quot;link-title&quot;&gt;</span><br><span class="line">                            &lt;h4&gt;Support&lt;&#x2F;h4&gt;</span><br><span class="line">                            &lt;small&gt;Features&lt;&#x2F;small&gt;&lt;br&gt;</span><br><span class="line">                            &lt;small&gt;Contact Us&lt;&#x2F;small&gt;</span><br><span class="line">                         &lt;&#x2F;div&gt;</span><br><span class="line">                         &lt;div class&#x3D;&quot;link-title&quot;&gt;</span><br><span class="line">                            &lt;h4&gt;Explore&lt;&#x2F;h4&gt;</span><br><span class="line">                            &lt;small&gt;Find a nonprofit&lt;&#x2F;small&gt;&lt;br&gt;</span><br><span class="line">                            &lt;small&gt;Corporate Solution&lt;&#x2F;small&gt;</span><br><span class="line">                         &lt;&#x2F;div&gt;</span><br><span class="line">                     &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>左側調整前↓</p>
+<p><img src="https://i.imgur.com/rvzmWgn.png"></p>
+<p>我們用css來美化一下並排出版面。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#footer</span>&#123;</span><br><span class="line">    <span class="comment">/*保留上方間距*/</span></span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">50px</span> <span class="number">0</span> <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line">hr&#123;</span><br><span class="line">    <span class="comment">/*設定寬度並在上方產生分隔線*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#f67c92</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-row</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-left-col</span>&#123;</span><br><span class="line">    <span class="comment">/*左側容器設定*/</span></span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-right-col</span>&#123;</span><br><span class="line">    <span class="comment">/*右側容器設定，不需要剛好一半，小一點*/</span></span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">35%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-links</span>&#123;</span><br><span class="line">    <span class="comment">/*左側文字區塊設定*/</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>調整後↓<br><img src="https://i.imgur.com/4haXZyb.png"></p>
+<p>接下來幫字體美化一下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.link-title</span> <span class="selector-tag">h4</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fab3c4</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.link-title</span> small&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">13px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/0PVjhwU.png"></p>
+<p>接著放入右側的資訊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;footer-right-col&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;footer-info&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;copyright-text&quot;&gt;</span><br><span class="line">           &lt;small&gt;support@xypo.com&lt;&#x2F;small&gt;&lt;br&gt;</span><br><span class="line">           &lt;small&gt;copyright 2020 Xypo&lt;&#x2F;small&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;footer-logo&quot;&gt;</span><br><span class="line">            &lt;img src&#x3D;&quot;images&#x2F;logo.png&quot;&gt;</span><br><span class="line">            &lt;button class&#x3D;&quot;common-btn&quot;&gt;English&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;         </span><br></pre></td></tr></table></figure>
+<p>頁面變成這樣↓<br><img src="https://i.imgur.com/NyRQ4TH.png"></p>
+<p>微調一下位置：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.footer-info</span>&#123;</span><br><span class="line">    <span class="comment">/*容器設定並讓內容靠右*/</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: flex-end;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-logo</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="comment">/*調整圖片大小*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-logo</span> <span class="selector-tag">button</span>&#123;</span><br><span class="line">    <span class="comment">/*調整按鈕*/</span></span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">12px</span> <span class="number">38px</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.copyright-text</span>,<span class="selector-class">.footer-logo</span>&#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">40%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>調整後↓<br><img src="https://i.imgur.com/XKu9kWc.png"></p>
+<p>到這邊我們的整體頁面已經大致做完了，接著加入一個小小的裝飾。</p>
+<h2 id="社群頁面符號"><a href="#社群頁面符號" class="headerlink" title="社群頁面符號"></a>社群頁面符號</h2><p>這邊想要將一些社群的logo放置在畫面的左側並隨著畫面移動。</p>
+<p>首先先加入圖片並調整大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;social-icons&quot;&gt;</span><br><span class="line">         &lt;img src&#x3D;&quot;images&#x2F;facebook.png&quot;&gt;</span><br><span class="line">         &lt;img src&#x3D;&quot;images&#x2F;instagram.png&quot;&gt;</span><br><span class="line">         &lt;img src&#x3D;&quot;images&#x2F;twitter.png&quot;&gt;</span><br><span class="line">         &lt;img src&#x3D;&quot;images&#x2F;linkedin.png&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.social-icons</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">position</span>: fixed;              <span class="comment">/*隨著畫面移動*/</span>    </span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;                      </span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">50%</span>);  <span class="comment">/*保持頁面中央*/</span></span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;                   <span class="comment">/*圖層設定*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.social-icons</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>呈現的效果↓<br><img src="https://i.imgur.com/Gg69VIS.png"></p>
+<h2 id="定位滾動效果"><a href="#定位滾動效果" class="headerlink" title="定位滾動效果"></a>定位滾動效果</h2><p>最後還記得我們的側邊選單嗎?<br><img src="https://i.imgur.com/chDbVkj.gif"></p>
+<p>這邊選單的文字有使用超連結，現在要讓他可以跳轉到指定的區塊</p>
+<p>首先先將定位點寫好，完成整個網頁後，可以找到各個區塊的ID，以ID作為跳轉的目的地。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav id&#x3D;&quot;sideNav&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#header&quot;&gt;HOME&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#about&quot;&gt;ABOUT US&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;    </span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#features&quot;&gt;FEATURES&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#courses&quot;&gt;COURSES&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#offer&quot;&gt;OFFER&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#contact&quot;&gt;CONTACT&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure>
+<p>這裡我們使用的是別人做好的跳轉效果<a target="_blank" rel="noopener" href="https://github.com/cferdinandi/smooth-scroll">傳送門：smooth scroll</a></p>
+<p>首先先加入這個效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;cferdinandi&#x2F;smooth-scroll&#x2F;dist&#x2F;smooth-scroll.polyfills.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>使用並調整速度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var scroll &#x3D; new SmoothScroll(&#39;a[href*&#x3D;&quot;#&quot;]&#39;);</span><br><span class="line">            speed: 1000,</span><br><span class="line">            speedAsDuration: true</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>這樣我們就暫時擁有簡單的動畫效果了。</p>
+<h2 id="RWD簡易設定"><a href="#RWD簡易設定" class="headerlink" title="RWD簡易設定"></a>RWD簡易設定</h2><p>這個網頁的css最後有包含了一個簡易的RWD樣式，一起來看看：<br>大部分是縮小圖片的尺寸或不顯示背景圖，<br>有些地方則是將欄位調整成100%讓他只顯示左側或右側欄位。</p>
+<p>來看看一些地方的改動效果吧</p>
+<p>取消背景圖↓<br><img src="https://i.imgur.com/MBVy65N.png"><br>直行排列↓<br><img src="https://i.imgur.com/ph3wX6X.png"><br>欄位修正↓<br><img src="https://i.imgur.com/WI6hmFI.png"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*螢幕寬度小於 770px則會採用以下樣式*/</span> </span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">770px</span>)&#123;</span><br><span class="line">    <span class="selector-id">#header</span>&#123;</span><br><span class="line">        <span class="attribute">background-image</span>: none; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.container</span>&#123;</span><br><span class="line">        <span class="attribute">margin-right</span>: <span class="number">50px</span>;</span><br><span class="line">        <span class="attribute">margin-left</span>: <span class="number">50px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.logo</span>&#123;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">27px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">70px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.header-text</span>&#123;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">100px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">h1</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">25px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-id">#menuBtn</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">        <span class="attribute">right</span>: <span class="number">50px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.common-btn</span>&#123;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">16px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.social-icons</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">14px</span>;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">15px</span> auto;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.about-left-col</span>,<span class="selector-class">.about-right-col</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.about-text</span>&#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.about-text</span> <span class="selector-tag">h2</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.feature-col</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.course-left-col</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.course-right-col</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">70px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.contact-left-col</span>,<span class="selector-class">.contact-right-col</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.contact-right-col</span>&#123;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">50px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.footer-left-col</span>,<span class="selector-class">.footer-right-col</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.link-title</span>&#123;</span><br><span class="line">        <span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/11/17/%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92%E2%88%92%E6%97%8B%E8%BD%89%E6%8B%BC%E6%8E%A5%E6%96%B9%E5%A1%8A/">
+        <span class="nav-arrow">← </span>
+        
+          金魚切版練習−旋轉拼接方塊
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/11/21/CSS-project-Resume/">
+        
+          CSS project - Resume
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Xypo-%E7%B6%B2%E9%A0%81%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Xypo 網頁實作筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Header-Section-%E9%A0%81%E9%A6%96"><span class="toc-nav-text">Header Section (頁首)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SideNav-%E5%81%B4%E9%82%8A%E6%AC%84"><span class="toc-nav-text">SideNav (側邊欄)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#About-Us%E5%8D%80%E5%A1%8A"><span class="toc-nav-text">About Us區塊</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Features-Section"><span class="toc-nav-text">Features Section</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Courses-Section-amp-Offer-Section"><span class="toc-nav-text">Courses Section &amp; Offer Section</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Contact-Section"><span class="toc-nav-text">Contact Section</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Footer-Section"><span class="toc-nav-text">Footer Section</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A4%BE%E7%BE%A4%E9%A0%81%E9%9D%A2%E7%AC%A6%E8%99%9F"><span class="toc-nav-text">社群頁面符號</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%BB%BE%E5%8B%95%E6%95%88%E6%9E%9C"><span class="toc-nav-text">定位滾動效果</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#RWD%E7%B0%A1%E6%98%93%E8%A8%AD%E5%AE%9A"><span class="toc-nav-text">RWD簡易設定</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2020/11/19/CSS-project-Xypo/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript Basic | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript Basic</h2>
+  <p class="post-date">2020-12-12</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="彭彭Javascript-課程影片筆記"><a href="#彭彭Javascript-課程影片筆記" class="headerlink" title="彭彭Javascript 課程影片筆記"></a>彭彭Javascript 課程影片筆記</h1><h2 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h2><ul>
+<li><a href="#%E8%AE%8A%E6%95%B8%E3%80%81%E8%B3%87%E6%96%99%E3%80%81%E9%81%8B%E7%AE%97%E5%AD%90">1. 變數、資料、運算子</a></li>
+<li><a href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%9A%E5%88%A4%E6%96%B7%E5%BC%8F-amp-%E8%BF%B4%E5%9C%88">2. 流程控制：判斷式 &amp; 迴圈</a></li>
+<li><a href="#%E5%87%BD%E5%BC%8F-Fuction">3. 函式 Fuction</a></li>
+<li><a href="#%E7%89%A9%E4%BB%B6-Object">4. 物件 Object</a></li>
+<li><a href="#HTML-DOM">5. HTML DOM</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86">6. 事件處理</a></li>
+<li><a href="#%E8%87%AA%E5%8B%95%E6%8E%92%E7%A8%8B">7. 自動排程</a></li>
+<li><a href="#Ajax%E6%95%99%E5%AD%B8">8. Ajax教學</a></li>
+<li><a href="#JSON">9. JSON</a></li>
+<li><a href="#%E5%AE%A3%E5%91%8A%E6%8F%90%E5%8D%87-Hoisting">10. 宣告提升 Hoisting</a><h2 id="變數、資料、運算子"><a href="#變數、資料、運算子" class="headerlink" title="變數、資料、運算子"></a>變數、資料、運算子</h2></li>
+</ul>
+<h3 id="1-資料"><a href="#1-資料" class="headerlink" title="1. 資料"></a>1. 資料</h3><p>資料分為幾種類型：數字<code>Number</code>、字串<code>String</code>、布林值<code>Boolean</code>、物件<code>Object</code></p>
+<ul>
+<li><strong>數字<code>Number</code></strong><br>如同字面上的意思，整數或小數都算是此類型，<br>另外有一些特別的值也算是此類，如：無限大<code>Infinity</code>、計算錯誤<code>NaN</code></li>
+<li><strong>字串<code>String</code></strong><br>字串<code>String</code>是被單引號<code>&#39;&#39;</code>或雙引號<code>&quot;&quot;</code>包裹在內的任何文字(不限語言)。</li>
+<li><strong>布林值<code>Boolean</code></strong><br>布林值<code>Boolean</code>僅包含兩個，正確Yes<code>True</code>或不正確No<code>False</code></li>
+</ul>
+<p>這邊還有兩個比較特別的類型<code>Undifined</code>跟<code>null</code>，都是單獨的一種類型。</p>
+<ul>
+<li><code>null</code><br>這個類型代表空的，無，或是未知。</li>
+<li><code>Undifined</code><br>這個類型則代表未給值，假設一個變數並未給定一個值，那就會是<code>Undifined</code>。<h3 id="2-變數"><a href="#2-變數" class="headerlink" title="2. 變數"></a>2. 變數</h3>變數<code>Variable</code>可以想像成是一個空間用來存放值<code>Value</code>。<br>這裡有幾個重點：</li>
+<li>變數<code>Variable</code>使用前必須被宣告↓<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br></pre></td></tr></table></figure></li>
+<li>等號右側就是給定這個變數<code>Variable</code>的值<code>Value</code><br>下面的例子就是我們先宣告一個變數<code>x</code>並給定一個值<code>10</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">x = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//或者簡化寫為</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">10</span></span><br></pre></td></tr></table></figure></li>
+<li>由於程式碼是逐行讀取，所以變數的值會被覆蓋。<br>我們來看看例子，第一個<code>alert(x)</code>會顯示出<code>10</code>，而第二個<code>alert(x)</code>會顯示出<code>Hello World</code>↓<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span></span><br><span class="line">alert(x)</span><br><span class="line">x = <span class="string">&quot;Hello World&quot;</span></span><br><span class="line">alert(x)</span><br></pre></td></tr></table></figure>
+<h3 id="3-運算子"><a href="#3-運算子" class="headerlink" title="3. 運算子"></a>3. 運算子</h3>所謂的運算在程式語言裡並不是只代表加減乘除等四則運算，而是泛指所有<strong>對資料的動作</strong>。</li>
+</ul>
+<p>最基本的運算子就是我們常見的：</p>
+<ul>
+<li><strong>加<code>+</code>，減<code>-</code>，乘<code>*</code>，除<code>/</code></strong><br>這邊還有幾個也算常見的：</li>
+<li><strong>取餘數<code>%</code>，平方<code>**</code>，自增<code>++</code>(加一)，自減<code>--</code>(減一)</strong></li>
+</ul>
+<p>接著要說的是<strong>比較運算子</strong>：比較運算輸出的會是布林值<code>True or False</code>。</p>
+<ul>
+<li><strong>大於<code>&gt;</code>，小於<code>&lt;</code>，大於等於<code>&lt;=</code>，小於等於<code>&gt;=</code>以及相等<code>==</code>和不相等<code>!=</code></strong></li>
+</ul>
+<p><strong>重點：一個等號<code>=</code>是賦值或稱為指派<code>assign</code>，而兩個等號<code>==</code>則是比較兩個值是否相等。</strong></p>
+<h3 id="4-內建函式alert-和prompt"><a href="#4-內建函式alert-和prompt" class="headerlink" title="4. 內建函式alert()和prompt()"></a>4. 內建函式<code>alert()</code>和<code>prompt()</code></h3><p>這兩個內建函數是最簡單的與使用者互動的內建函數。<br>做法大概是這樣↓</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">&quot;Hello World&quot;</span>) <span class="comment">//畫面跳出視窗並顯示&quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prompt(<span class="string">&quot;請輸入數字&quot;</span>，<span class="string">&quot;0&quot;</span>)<span class="comment">//畫面跳出可填入表單，顯示提示語&quot;請輸入數字&quot;和預設值&quot;0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制：判斷式-amp-迴圈"><a href="#流程控制：判斷式-amp-迴圈" class="headerlink" title="流程控制：判斷式 &amp; 迴圈"></a>流程控制：判斷式 &amp; 迴圈</h2><h3 id="1-判斷式if、else-if、else"><a href="#1-判斷式if、else-if、else" class="headerlink" title="1.判斷式if、else if、else"></a>1.判斷式<code>if</code>、<code>else if</code>、<code>else</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(一次判斷)&#123;</span><br><span class="line"><span class="comment">//若第一次判斷的結果正確True，則執行if&#123;&#125;內的程式碼，若結果不正確False，則進入第二次判斷。</span></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(二次判斷)&#123;</span><br><span class="line"><span class="comment">//若二次判斷的結果正確True，則執行else if&#123;&#125;內的程式碼，若結果不正確False，進入最終判斷。</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//若以上結果皆為不正確False，則執行else&#123;&#125;內的程式碼。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這邊有做一個小的四則運算練習↓</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n1 = prompt(<span class="string">&quot;請輸入數字&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> n2 = prompt(<span class="string">&quot;請輸入數字&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="comment">//資料型態轉換：字串-&gt;數字</span></span><br><span class="line"><span class="comment">//由於prompt輸入成為字串，在+號運算時會有錯誤，故先進行型態轉換。</span></span><br><span class="line">n1 = <span class="built_in">Number</span>(n1);</span><br><span class="line">n2 = <span class="built_in">Number</span>(n1);</span><br><span class="line"><span class="keyword">var</span> op = prompt(<span class="string">&quot;請輸入運算+, -, *, /&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> result;</span><br><span class="line"><span class="keyword">if</span>(op == +)&#123;</span><br><span class="line">    result = n1 + n2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op == -)&#123;</span><br><span class="line">    result = n1 - n2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op == *)&#123;</span><br><span class="line">    result = n1 * n2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op == /)&#123;</span><br><span class="line">    result = n1 / n2;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    result = <span class="string">&quot;不合法的運算&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">alert(result);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-迴圈while、for"><a href="#2-迴圈while、for" class="headerlink" title="2.迴圈while、for"></a>2.迴圈<code>while</code>、<code>for</code></h3><ul>
+<li><strong><code>while</code>迴圈的運作方式如下：</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(判斷)&#123;</span><br><span class="line">    <span class="comment">/*若判斷結果為正確True，則執行&#123;&#125;內程式碼，並於完成後回到起始點繼續迴圈</span></span><br><span class="line"><span class="comment">      若判斷依然為正確True，繼續執行&#123;&#125;內程式碼，直到判斷結果為False才停止*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+舉例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;        <span class="comment">//宣告並給定初始值=0</span></span><br><span class="line"><span class="keyword">while</span>(n&lt;=<span class="number">50</span>)&#123;     <span class="comment">//當n&lt;=50時都會啟動迴圈內程式碼</span></span><br><span class="line">    n++;          <span class="comment">//n+1</span></span><br><span class="line">&#125;</span><br><span class="line">alert(n)          <span class="comment">//印出結果51，n=50時做最後一次+1並跳出迴圈。</span></span><br></pre></td></tr></table></figure>
+舉例2：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span>;      <span class="comment">//宣告並給定初始值=0</span></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">1</span>         <span class="comment">//宣告並給定初始值=1</span></span><br><span class="line"><span class="keyword">while</span>(i&lt;=<span class="number">100</span>)&#123;    <span class="comment">//當i&lt;=100時都會啟動迴圈內程式碼</span></span><br><span class="line">    sum=sum+i     <span class="comment">//sum+=i</span></span><br><span class="line">    i++           <span class="comment">//i+1</span></span><br><span class="line">&#125;</span><br><span class="line">alert(sum)        <span class="comment">//印出結果5050，i=100時做最後一次互加並跳出迴圈。</span></span><br></pre></td></tr></table></figure>
+這邊我們來看看這個迴圈的<strong>變數追蹤</strong>，總共執行了101次的迴圈，得總結果為5050。</li>
+</ul>
+<p><strong>0<br>sum:0, i:1<br>1<br>sum:1, i:2<br>2<br>sum:3, i:3<br>3<br>sum:6, i:4<br>…<br>100<br>sum:5050, i:100</strong></p>
+<ul>
+<li><strong><code>for</code>迴圈的運作方式如下：</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始區塊;判斷;迴圈區塊)&#123;</span><br><span class="line">    <span class="comment">//初始區塊可以將控制迴圈的變數初始值寫在這</span></span><br><span class="line">    <span class="comment">//迴圈區塊可以將控制迴圈的變數要做的運算寫在這</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+舉例：這個例子跟上面的while迴圈功能一模一樣，只是以<code>for</code>迴圈方式寫成<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span>;      </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;    </span><br><span class="line">    sum=sum+i             </span><br><span class="line">&#125;</span><br><span class="line">alert(sum)        </span><br></pre></td></tr></table></figure></li>
+<li><strong><code>break</code>和<code>continue</code>命令在迴圈中的作用</strong></li>
+</ul>
+<p><code>break</code>命令用來強制跳出迴圈，舉例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(n&lt;=<span class="number">100</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">50</span>)&#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line">alert(n);        <span class="comment">//結果會是50，因為n==50時觸發break命令，所以迴圈停止。</span></span><br></pre></td></tr></table></figure>
+<p><code>continue</code>命令用來強制進行下一次迴圈，舉例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br><span class="line">alert(x);        <span class="comment">//結果會是50，因為x每兩次才會+1，所以總共只+1 50次，故結果為50`.</span></span><br></pre></td></tr></table></figure>
+<p>這邊我們來看看這個迴圈的<strong>變數追蹤</strong>，得結果為50。<br><strong>0<br>sum:0, i:0<br>1<br>sum:0, i:1<br>2<br>sum:1, i:2<br>3<br>sum:1, i:3<br>…<br>100<br>sum:50, i=100</strong></p>
+<h2 id="函式-Fuction"><a href="#函式-Fuction" class="headerlink" title="函式 Fuction"></a>函式 <code>Fuction</code></h2><h3 id="1-內建函式"><a href="#1-內建函式" class="headerlink" title="1.內建函式"></a>1.內建函式</h3><p>內建函式是利用<strong>特定的名稱</strong>來達成已經內建好程式碼的函式<br>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">&quot;Hello World&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>利用<code>alert</code>這個關鍵詞加上<code>()</code>進行呼叫<code>calling</code>，達成它的效果。</p>
+<h3 id="2-函式基礎"><a href="#2-函式基礎" class="headerlink" title="2.函式基礎"></a>2.函式基礎</h3><ul>
+<li><strong>設計階段</strong></li>
+</ul>
+<p>利用<code>fuction</code>+<code>函式名稱</code>+<code>(參數parameter)</code>+<code>&#123;&#125;</code>來建構一個函式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">fuctionName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//函式本體(內部程式碼)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>呼叫 / 使用階段</strong></li>
+</ul>
+<p>利用設定好的<code>函式名稱</code>+<code>()</code>來呼叫函式讓它作用函式內部程式碼。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fuctionName();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>參數<code>parameter</code></strong></li>
+</ul>
+<p>參數<code>parameter</code>可以讓函式更有彈性，每次呼叫時可以用不同的資料替代。<br>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">test</span>(<span class="params">message</span>)</span>&#123;</span><br><span class="line">    alert(message)</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">test(<span class="string">&quot;Hello Javascript&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>在這個例子裡，就是用兩個不同的字串來替代了message這個參數，也就是<strong>傳入函式的參數資料</strong>。</p>
+<p>若有多個參數，利用<code>,</code>隔開。<br>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">add</span>(<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">    alert(n1+n2)</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>在這個加法例子裡，由於需要兩個數字做為參數，所以中間以<code>,</code>隔開。</p>
+<ul>
+<li><strong>回傳<code>return</code></strong></li>
+</ul>
+<p>一個函式<code>function</code>可以沒有回傳值，省略<code>return</code>語句，預設會回傳<code>undefined</code><br>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">add</span>(<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">    alert(n1+n2)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">3</span>,<span class="number">4</span>)  <span class="comment">//結果會跳出視窗顯示運算結果7</span></span><br><span class="line">alert(result)          <span class="comment">//結果會跳出undifined，因為省略return語句，預設會回傳undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>回傳可以做些什麼呢?<br>利用回傳將資料送回函式的外部，回傳後可以再做運算。<br>舉個例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">add</span>(<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">    alert(n1+n2)</span><br><span class="line">    <span class="keyword">return</span> n1+n2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result = add(<span class="number">3</span>,<span class="number">4</span>)*add(<span class="number">10</span>,<span class="number">20</span>) </span><br><span class="line">alert(result)    <span class="comment">//結果就會是回傳的7*回傳的30=210。      </span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>整合範例</strong></li>
+</ul>
+<p>當要重複進行運算，就可以使用函式，保持程式的彈性可以利用參數。<br>例子：計算1~max(可自行輸入數字)的加總</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">getSum</span>(<span class="params">max</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(n&lt;=max)&#123;</span><br><span class="line">        sum+=n;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(sum);</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">getSum(<span class="comment">/*輸入需要的數字便可進行運算*/</span>);</span><br><span class="line"><span class="keyword">var</span> result = getsum(<span class="number">10</span>)*getsum(<span class="number">20</span>);</span><br><span class="line"><span class="comment">//若要進行外部運算可利用return。</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-函式變形與名稱空間"><a href="#3-函式變形與名稱空間" class="headerlink" title="3.函式變形與名稱空間"></a>3.函式變形與名稱空間</h3><ul>
+<li><strong>函式變形</strong></li>
+</ul>
+<p>函式是一種資料，可以放入變數或是對它進行操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">add</span>(<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">    alert(n1+n2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以寫成↓</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">    alert(n1+n2);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>判別變數是什麼資料來對變數進行操作。<br>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;    </span><br><span class="line">x+<span class="number">3</span>;          <span class="comment">//變數的值是數字，可以加減乘除等等。</span></span><br><span class="line">x = <span class="string">&quot;String&quot;</span>;</span><br><span class="line">x+<span class="string">&quot;Hello&quot;</span>;    <span class="comment">//變數的值是字串，可以進行串接</span></span><br><span class="line">x = <span class="function"><span class="title">fuction</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">&quot;Hello World&quot;</span>);&#125;;</span><br><span class="line">x();          <span class="comment">//變數的值是函式，可以進行呼叫。</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>名稱空間</strong></li>
+</ul>
+<p>函式的<code>&#123;&#125;</code>內部是一個新的名稱空間。</p>
+<p>外部的程式碼<strong>無法使用</strong>函式內部的變數。</p>
+<p>函式內部程式碼在找不到變數時，會往外部找。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;           <span class="comment">//全域空間，全域變數。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> y=<span class="number">5</span>          <span class="comment">//區域空間，區域變數</span></span><br><span class="line">    alert(x+y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();         <span class="comment">//可成功印出，沒有變數x，但函式會往外找到全域變數x</span></span><br><span class="line">alert(x+y);     <span class="comment">//無法印出，因為外部空間沒有y這個變數。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="物件-Object"><a href="#物件-Object" class="headerlink" title="物件 Object"></a>物件 <code>Object</code></h2><h3 id="1-基本物件設計"><a href="#1-基本物件設計" class="headerlink" title="1.基本物件設計"></a>1.基本物件設計</h3><ul>
+<li><strong>建立空白物件</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure></li>
+<li><strong>建立物件的成員(屬性與方法)</strong></li>
+</ul>
+<p>用<code>.</code>來建立物件的成員，不是方法(函式)就是屬性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">point.x=<span class="number">3</span>    <span class="comment">//物件中的成員x=3，屬性</span></span><br><span class="line">point.y=<span class="number">4</span>    <span class="comment">//物件中的成員y=4，屬性</span></span><br><span class="line">point.getPosition=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>.x+<span class="string">&quot;,&quot;</span>+<span class="built_in">this</span>.y)</span><br><span class="line">&#125;;           <span class="comment">//getPosition=物件的方法</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>使用物件</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(point.x)        <span class="comment">//使用物件的屬性</span></span><br><span class="line">point.getPosition();  <span class="comment">//利用呼叫來使用物件的方法，跟使用函式相同。</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>綜合範例(遊戲中的玩家設計)</strong></li>
+</ul>
+<p>物件的行為、程序用函式表達</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加入參數來讓所需的資料可以替代參數。</span></span><br><span class="line"><span class="keyword">var</span> player = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">player.name=<span class="string">&quot;John&quot;</span>;                <span class="comment">//玩家的名稱屬性</span></span><br><span class="line">player.hp=<span class="number">100</span>;                     <span class="comment">//玩家的生命屬性</span></span><br><span class="line">player.fight = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;         <span class="comment">//玩家戰鬥的行為</span></span><br><span class="line">    <span class="built_in">this</span>.hp = <span class="built_in">this</span>.hp-<span class="number">2</span>;           <span class="comment">//造成hp-2  </span></span><br><span class="line">&#125;;</span><br><span class="line">player.rest = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;          <span class="comment">//玩家休息的行為</span></span><br><span class="line">    <span class="built_in">this</span>.hp++;                     <span class="comment">//造成生命+1</span></span><br><span class="line">&#125;;</span><br><span class="line">player.report = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;        <span class="comment">//玩家回報狀態的行為</span></span><br><span class="line">    alert(<span class="built_in">this</span>.name+<span class="string">&quot;:&quot;</span>+<span class="built_in">this</span>.hp);  <span class="comment">//印出玩家名稱+玩家生命值</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">player.fight();                    <span class="comment">//hp-2</span></span><br><span class="line">player.rest();                     <span class="comment">//hp+1</span></span><br><span class="line">player.report();                   <span class="comment">//回報狀態，印出John:99</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-建構式"><a href="#2-建構式" class="headerlink" title="2.建構式"></a>2.建構式</h3><p>可以用來建立複數類似的物件，避免程式碼繁雜或重複過多。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Player</span>(<span class="params">name,hp</span>)</span>&#123;               <span class="comment">//建構物件的函式</span></span><br><span class="line"><span class="comment">//this代表新建的空白物件</span></span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.hp = hp;</span><br><span class="line">    <span class="built_in">this</span>.fight = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.hp = <span class="built_in">this</span>.hp-<span class="number">2</span>; </span><br><span class="line">&#125;;</span><br><span class="line">    player.rest = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.hp++;</span><br><span class="line">&#125;;</span><br><span class="line">player.report = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>.name+<span class="string">&quot;:&quot;</span>+<span class="built_in">this</span>.hp);</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> player = <span class="keyword">new</span> Player(<span class="string">&quot;John&quot;</span>,<span class="number">100</span>);    <span class="comment">//建構式使用時前方加上new</span></span><br><span class="line">player.fight();</span><br><span class="line">player.rest();</span><br><span class="line">player.report();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> player2 = <span class="keyword">new</span> Player(<span class="string">&quot;Bob&quot;</span>,<span class="number">80</span>);</span><br><span class="line">player.fight();</span><br><span class="line">player.report();</span><br></pre></td></tr></table></figure>
+<h2 id="HTML-DOM"><a href="#HTML-DOM" class="headerlink" title="HTML DOM"></a>HTML DOM</h2><p><strong>文件物件模型<code>Document Object Model</code></strong></p>
+<p>下圖是瀏覽器在載入一個html檔案時，會呈現出的一個動態的物件結構(樹狀結構)，也就是HTML DOM。<br><img src="https://i.imgur.com/fnGZWvj.png"></p>
+<p>以下說明一些圖中的名詞：</p>
+<p>畫面中每個欄位可以視作一個**節點<code>node</code>**，上層節點稱為<code>parent node</code>，而下層節點則稱作<code>child node</code>，而同層的節點互為<code>sibling</code>。</p>
+<p>這裡舉了一個簡單的例子告訴我們在<code>Javascript</code>中可以簡單地取用圖中的物件。</p>
+<p>例子：顯示出螢幕寬度x高度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="built_in">window</span>.screen.width+<span class="string">&quot;x&quot;</span>+<span class="built_in">window</span>.screen.height)</span><br></pre></td></tr></table></figure>
+<p>接下來又做了一個例子來說明取用文件物件。<br>但本例子直接對整個body做處理，並不實用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fuction = <span class="function"><span class="title">change</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.document.body.innerHTML=<span class="string">&quot;Hello World&quot;</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>原來的畫面會呈現一個change按鈕，按下後(事件處理)，呼叫函式，將body內替換為”Hello World”<br>所以按下按鈕後的畫面就只會顯示文字：Hello World</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;button onclick&#x3D;&quot;change()&quot;;&gt;Change&lt;&#x2F;button&gt;    &#x2F;&#x2F;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>比較常用的取用物件方式</p>
+<ul>
+<li><strong>document.getElementById(‘idName’)</strong><br>找尋 DOM 中符合此 id 名稱的元素</li>
+<li><strong>document.getElementByClassName(‘className’)</strong><br>找尋 DOM 中符合此 class 名稱的所有元素</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">change</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> spanObj=<span class="built_in">document</span>.getElementById(<span class="string">&#x27;idName&#x27;</span>)   <span class="comment">//取用某個id名稱的元素，這裡是span元素</span></span><br><span class="line"></span><br><span class="line">spanObj.innerHTML=<span class="string">&quot;修改內容&quot;</span>                     <span class="comment">//對span元素修改內容</span></span><br><span class="line">spanObj.style.color=<span class="string">&quot;修改顏色&quot;</span>                   <span class="comment">//對span元素修改顏色</span></span><br><span class="line">spanObj.style.fontWeight=<span class="string">&quot;修改字體粗細&quot;</span>           <span class="comment">//對span元素修改字體粗細</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同時在修改時不只修改內容，也可以修改元素的css，但是css常用的<code>-</code>符號，在javascript中不能使用，所以在命名上會改為字首大寫</p>
+<p>例：font-weight 改為 fontWeight</p>
+<p>後續影片做了一個選單開合的範例，正好之前的切版練習有做類似例子，所以直接以之前網頁為例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">            <span class="comment">//首先我們先利用之前設定好的id來宣告</span></span><br><span class="line">        <span class="keyword">var</span> menuBtn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;menuBtn&quot;</span>)</span><br><span class="line">        <span class="keyword">var</span> sideNav = <span class="built_in">document</span>.getElementById(<span class="string">&quot;sideNav&quot;</span>)</span><br><span class="line">        <span class="keyword">var</span> menu = <span class="built_in">document</span>.getElementById(<span class="string">&quot;menu&quot;</span>)</span><br><span class="line"></span><br><span class="line">        sideNav.style.right == <span class="string">&quot;-200px&quot;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//我們先將前面的側邊欄位置改為-200px，讓它消失在畫面上</span></span><br><span class="line">        <span class="comment">//來設定只有點擊時側邊欄從-200px出現到0px的位置</span></span><br><span class="line">        <span class="comment">//同時點擊時會將選單圖案改為關閉的圖案</span></span><br><span class="line">        </span><br><span class="line">        menuBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(sideNav.style.right == <span class="string">&quot;-200px&quot;</span>)&#123;</span><br><span class="line">                sideNav.style.right = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">                menu.src = <span class="string">&quot;img/close.png&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                sideNav.style.right = <span class="string">&quot;-200px&quot;</span>;</span><br><span class="line">                menu.src = <span class="string">&quot;img/menu.png&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
+<p>但影片內容有介紹更精簡的搭配CSS選擇器實現選單出現與消失，例子如下↓<br>CSS部分：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hide</span>&#123;<span class="attribute">display</span>:none;&#125;</span><br></pre></td></tr></table></figure>
+<p>javascript部分：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                <span class="comment">//透過參數來讓程式碼保持彈性，可應用在多個元素中。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toggleMenu</span>(<span class="params">number</span>)</span>&#123;  </span><br><span class="line">                <span class="comment">//選擇元素+數字即可切換不同選單實現開合。</span></span><br><span class="line">    <span class="keyword">var</span> menu = <span class="built_in">document</span>.getElementById(<span class="string">&quot;menu-&quot;</span>+number); </span><br><span class="line">    menu.classList.toggle(<span class="string">&quot;hide&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="事件處理"><a href="#事件處理" class="headerlink" title="事件處理"></a>事件處理</h2><h3 id="1-基本教學"><a href="#1-基本教學" class="headerlink" title="1.基本教學"></a>1.基本教學</h3><p>當使用者對畫面做一個動作，程式碼必須要偵測到這個動作並且做出反應。<br>任何的標籤都可以撰寫事件處理的程式碼，<code>on</code>加上<code>事件的名稱</code>，下面的例子是<code>click</code>。</p>
+<ul>
+<li>靜態的事件處理</li>
+</ul>
+<p>在靜態的網頁中直接進行事件處理。</p>
+<p>例子1：<br>基本的事件處理，點擊時產生<code>點擊事件</code>並執行程式碼：跳出警告視窗並顯示’Clicked’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button onclick&#x3D;&quot;alert(&#39;Clicked&#39;);&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<p>例子2：<br>接下來介紹指標觸碰<code>mouseover</code>及指標離開<code>mouseout</code>兩種事件。<br>觸碰時修改顏色為red，離開時則為black。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span onmouseover&#x3D;&quot;this.style.color&#x3D;&#39;red&#39;;&quot; </span><br><span class="line">    onmouseout&#x3D;&quot;this.style.color&#x3D;&#39;black&#39;;&quot;&gt;Test&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+<p>例子2優化：<br>利用函式可以將不同的事件處理套用到不同的標籤當中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">over</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">    element.style.color=<span class="string">&quot;red&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">fuction <span class="function"><span class="title">out</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">    element.style.color=<span class="string">&quot;black&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span onmouseover&#x3D;&quot;over(this);&quot; </span><br><span class="line">    onmouseout&#x3D;&quot;out(this);&quot;&gt;Test&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>動態的事件處理</li>
+</ul>
+<p>用 Javascript 的程式，動態的註冊事件處理器。</p>
+<p><strong>註冊事件處理器</strong>：將網頁元素與事件做出關聯。</p>
+<p>例子：使用載入事件<code>onload</code><br>當載入事件發生時，自動註冊事件處理器給<code>btn</code>這個id的元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> btn=<span class="built_in">document</span>.getElementById(<span class="string">&quot;btn&quot;</span>)</span><br><span class="line">    btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="string">&quot;Clicked&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body onload&#x3D;&quot;init();&quot;&gt;</span><br><span class="line">    &lt;button id&#x3D;&quot;btn&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例子2：現代化寫法(較新)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    <span class="comment">//先準備一個事件處理器來對應事件的函式。</span></span><br><span class="line">        alert(<span class="string">&quot;Clicked&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    btn.addEventListener(<span class="string">&quot;click&quot;</span> <span class="comment">/* 事件的名稱 */</span>, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-事件物件-Event-Object"><a href="#2-事件物件-Event-Object" class="headerlink" title="2.事件物件 Event Object"></a>2.事件物件 Event Object</h3><p>事件處理器中，若給予參數名稱，則為事件物件的名稱。</p>
+<p>例子：載入時，點擊按鈕顯示警告視窗”Hello”</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> btn=<span class="built_in">document</span>.getElementById(<span class="string">&quot;btn&quot;</span>)</span><br><span class="line">    <span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">         alert(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    btn.addEventListener(<span class="string">&quot;click&quot;</span>, handler);</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">       使用者點擊按鈕後的狀態流程。</span></span><br><span class="line"><span class="comment">       1.使用者點擊按鈕後，觸發 click 事件。</span></span><br><span class="line"><span class="comment">       2.瀏覽器主動收集跟事件有關的資訊，並製造出事件物件。</span></span><br><span class="line"><span class="comment">         var eventObj=事件物件</span></span><br><span class="line"><span class="comment">       3.呼叫已經註冊的事件處理器(事件處理函式)</span></span><br><span class="line"><span class="comment">         handler(eventObj);</span></span><br><span class="line"><span class="comment">    */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body onload&#x3D;&quot;init();&quot;&gt;</span><br><span class="line">    &lt;button id&#x3D;&quot;btn&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例子2：取得事件物件跟使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> btn=<span class="built_in">document</span>.getElementById(<span class="string">&quot;btn&quot;</span>)</span><br><span class="line">    <span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;             <span class="comment">//給事件物件一個名稱e</span></span><br><span class="line">         alert(e.clientX+<span class="string">&quot;,&quot;</span>+e.clientY);   <span class="comment">//取得滑鼠座標的位置並顯示。</span></span><br><span class="line">    &#125;;</span><br><span class="line">    btn.addEventListener(<span class="string">&quot;click&quot;</span>, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子3：匿名函式，用來作為事件處理器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&quot;keydown&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    alert(e.keyCode);        <span class="comment">//取得使用者按下鍵盤的按鍵資訊。</span></span><br><span class="line">&#125;)  </span><br></pre></td></tr></table></figure>
+<h2 id="自動排程"><a href="#自動排程" class="headerlink" title="自動排程"></a>自動排程</h2><p>利用程式自動在一段設定好的時間後再執行。</p>
+<p>例子：使用<code>window.setTimeout</code>在一秒(1000毫秒)後執行countdown函式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.setTimeout(countdown, <span class="number">1000</span>);  <span class="comment">//系統在一秒(1000毫秒)後執行countdown函式。</span></span><br><span class="line">&#125;</span><br><span class="line">fuction <span class="function"><span class="title">countdown</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子2：排程並設定條件判斷執行函式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer;</span><br><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    timer=<span class="built_in">document</span>.getElementById(<span class="string">&quot;timer&quot;</span>)            <span class="comment">//取得修改物件</span></span><br><span class="line">    <span class="built_in">window</span>.setTimeout(countdown, <span class="number">1000</span>);               <span class="comment">//第1次執行-1</span></span><br><span class="line">&#125;</span><br><span class="line">fuction <span class="function"><span class="title">countdown</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    timer.innerHTML=timer.innerHTML-<span class="number">1</span>;                <span class="comment">//函式執行-1</span></span><br><span class="line">    <span class="keyword">if</span>(timer.innerHTML&gt;<span class="number">0</span>)&#123;                            <span class="comment">//若尚未倒數至0，繼續倒數</span></span><br><span class="line">        <span class="built_in">window</span>.setTimeout(countdown, <span class="number">1000</span>);           <span class="comment">//持續執行-1</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;                                            <span class="comment">//若倒數至0，做其他動作。</span></span><br><span class="line">        <span class="built_in">document</span>.location=<span class="string">&quot;http://www.yahoo.com.tw&quot;</span>   <span class="comment">//跳轉網頁至設定網址。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body onload&#x3D;&quot;init();&quot;&gt;</span><br><span class="line">    &lt;span id&#x3D;&quot;timer&quot;&gt;3&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<p>例子3：使用<code>window.setIterval</code>，每秒鐘執行一次countdown。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer;</span><br><span class="line">fuction <span class="function"><span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    timer=<span class="built_in">document</span>.getElementById(<span class="string">&quot;timer&quot;</span>)            </span><br><span class="line">    <span class="built_in">window</span>.setIterval(countdown, <span class="number">1000</span>);               </span><br><span class="line">&#125;</span><br><span class="line">fuction <span class="function"><span class="title">countdown</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    timer.innerHTML=timer.innerHTML-<span class="number">1</span>;                </span><br><span class="line">    <span class="keyword">if</span>(timer.innerHTML&gt;<span class="number">0</span>)&#123;                            </span><br><span class="line">        <span class="comment">//window.setTimeout(countdown, 1000);  不需要這行程式碼也可以持續執行      </span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;                                            </span><br><span class="line">        <span class="built_in">document</span>.location=<span class="string">&quot;http://www.yahoo.com.tw&quot;</span>   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body onload&#x3D;&quot;init();&quot;&gt;</span><br><span class="line">    &lt;span id&#x3D;&quot;timer&quot;&gt;3&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Ajax教學"><a href="#Ajax教學" class="headerlink" title="Ajax教學"></a>Ajax教學</h2><p>利用程式進行網路連線。</p>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="1-JSON基本教學"><a href="#1-JSON基本教學" class="headerlink" title="1.JSON基本教學"></a>1.JSON基本教學</h3><p><strong>JSON：Javascript Object Notation(Javascript物件表示法)</strong></p>
+<p>原始物件寫法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">point.x=<span class="number">3</span>    </span><br><span class="line">point.y=<span class="number">4</span>    </span><br><span class="line">point.get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>.x+<span class="string">&quot;,&quot;</span>+<span class="built_in">this</span>.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JSON使用<code>&#123;&#125;</code>作為替代，相等於上方程式碼</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123;<span class="string">&quot;x&quot;</span>:<span class="number">3</span>, <span class="string">&quot;y&quot;</span>:<span class="number">4</span>, <span class="string">&quot;get&quot;</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="built_in">this</span>.x+<span class="string">&quot;,&quot;</span>+<span class="built_in">this</span>.y)</span><br><span class="line">&#125;&#125;;</span><br><span class="line">point.get();      </span><br></pre></td></tr></table></figure>
+<p>可做排版↓</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> point = &#123;</span><br><span class="line">    <span class="string">&quot;x&quot;</span>:<span class="number">3</span>,</span><br><span class="line">    <span class="string">&quot;y&quot;</span>:<span class="number">4</span>, </span><br><span class="line">    <span class="string">&quot;get&quot;</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="built_in">this</span>.x+<span class="string">&quot;,&quot;</span>+<span class="built_in">this</span>.y)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">point.get();                        <span class="comment">//使用get函式</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-JSON物件轉換字串"><a href="#2-JSON物件轉換字串" class="headerlink" title="2.JSON物件轉換字串"></a>2.JSON物件轉換字串</h3><p>將物件轉換為字串，可用來傳輸給後端。</p>
+<p><code>JSON.stringify</code>：將物件轉換為JSON格式的字串，但忽略函式。<br><code>JSON.parse</code>：將JSON格式字串重新轉為物件結構</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonStr = <span class="built_in">JSON</span>.stringify(point);</span><br><span class="line"><span class="built_in">console</span>.log(jsonStr);                    <span class="comment">//透過開發者工具可看到已轉為字串。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> plainObj = <span class="built_in">JSON</span>.parse(jsonStr);</span><br><span class="line"><span class="built_in">console</span>.log(plainObj);                   <span class="comment">//透過開發者工具可看到已轉回物件結構</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="宣告提升-Hoisting"><a href="#宣告提升-Hoisting" class="headerlink" title="宣告提升 Hoisting"></a>宣告提升 Hoisting</h2><h3 id="1-變數的宣告提升"><a href="#1-變數的宣告提升" class="headerlink" title="1.變數的宣告提升"></a>1.變數的宣告提升</h3><p>正常的變數宣告及使用流程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;        <span class="comment">//宣告變數</span></span><br><span class="line">x = <span class="number">10</span>;       <span class="comment">//指派值</span></span><br><span class="line">alert(x);     <span class="comment">//使用變數</span></span><br></pre></td></tr></table></figure>
+<p>但我們將變數的宣告移到最後，依然可以成功執行：<br>Javascript會在執行程式之前自動將變數宣告提升<code>Hoisting</code>才執行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">10</span>;       <span class="comment">//指派值</span></span><br><span class="line">alert(x);     <span class="comment">//使用變數</span></span><br><span class="line"><span class="keyword">var</span> x;        <span class="comment">//宣告變數</span></span><br></pre></td></tr></table></figure>
+<p>但只會提升宣告，而不會連同值一同提升，所以下面程式碼會印出<code>undifined</code>，因為值並未提升。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert(x);     <span class="comment">//使用變數</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>;   <span class="comment">//宣告變數並指派值</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-函式的宣告提升"><a href="#2-函式的宣告提升" class="headerlink" title="2.函式的宣告提升"></a>2.函式的宣告提升</h3><p>正常函式的宣告與呼叫：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fuction <span class="function"><span class="title">test</span>(<span class="params"></span>)</span>&#123;        <span class="comment">//函式宣告</span></span><br><span class="line">    alert(<span class="string">&quot;Hello&quot;</span>);    </span><br><span class="line">&#125;</span><br><span class="line">test();                <span class="comment">//呼叫函式</span></span><br></pre></td></tr></table></figure>
+<p>我們將函式的宣告移到最後，依然可以成功執行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test();                <span class="comment">//呼叫函式</span></span><br><span class="line">fuction <span class="function"><span class="title">test</span>(<span class="params"></span>)</span>&#123;        <span class="comment">//函式宣告</span></span><br><span class="line">    alert(<span class="string">&quot;Hello&quot;</span>);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但這種情形，由於只有變數的宣告被提升，函式的資料並未被提升，所以不能執行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test();                  <span class="comment">//呼叫函式</span></span><br><span class="line"><span class="keyword">var</span> test = fuction ()&#123;   <span class="comment">//將函式以變數方式宣告</span></span><br><span class="line">    alert(<span class="string">&quot;Hello&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/11/25/CSS-project-Barber-Shop/">
+        <span class="nav-arrow">← </span>
+        
+          CSS project - Barber Shop
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/12/29/Javascript-Project-Form-Validator/">
+        
+          Javascript Project - Form Validator
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%BD%AD%E5%BD%ADJavascript-%E8%AA%B2%E7%A8%8B%E5%BD%B1%E7%89%87%E7%AD%86%E8%A8%98"><span class="toc-nav-text">彭彭Javascript 課程影片筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%9B%AE%E9%8C%84"><span class="toc-nav-text">目錄</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%8A%E6%95%B8%E3%80%81%E8%B3%87%E6%96%99%E3%80%81%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-nav-text">變數、資料、運算子</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E8%B3%87%E6%96%99"><span class="toc-nav-text">1. 資料</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E8%AE%8A%E6%95%B8"><span class="toc-nav-text">2. 變數</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-nav-text">3. 運算子</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%85%A7%E5%BB%BA%E5%87%BD%E5%BC%8Falert-%E5%92%8Cprompt"><span class="toc-nav-text">4. 內建函式alert()和prompt()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%9A%E5%88%A4%E6%96%B7%E5%BC%8F-amp-%E8%BF%B4%E5%9C%88"><span class="toc-nav-text">流程控制：判斷式 &amp; 迴圈</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%88%A4%E6%96%B7%E5%BC%8Fif%E3%80%81else-if%E3%80%81else"><span class="toc-nav-text">1.判斷式if、else if、else</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E8%BF%B4%E5%9C%88while%E3%80%81for"><span class="toc-nav-text">2.迴圈while、for</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%BD%E5%BC%8F-Fuction"><span class="toc-nav-text">函式 Fuction</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%85%A7%E5%BB%BA%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">1.內建函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%87%BD%E5%BC%8F%E5%9F%BA%E7%A4%8E"><span class="toc-nav-text">2.函式基礎</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%87%BD%E5%BC%8F%E8%AE%8A%E5%BD%A2%E8%88%87%E5%90%8D%E7%A8%B1%E7%A9%BA%E9%96%93"><span class="toc-nav-text">3.函式變形與名稱空間</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%A9%E4%BB%B6-Object"><span class="toc-nav-text">物件 Object</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%89%A9%E4%BB%B6%E8%A8%AD%E8%A8%88"><span class="toc-nav-text">1.基本物件設計</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%BB%BA%E6%A7%8B%E5%BC%8F"><span class="toc-nav-text">2.建構式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTML-DOM"><span class="toc-nav-text">HTML DOM</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86"><span class="toc-nav-text">事件處理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%95%99%E5%AD%B8"><span class="toc-nav-text">1.基本教學</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E4%BA%8B%E4%BB%B6%E7%89%A9%E4%BB%B6-Event-Object"><span class="toc-nav-text">2.事件物件 Event Object</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%87%AA%E5%8B%95%E6%8E%92%E7%A8%8B"><span class="toc-nav-text">自動排程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Ajax%E6%95%99%E5%AD%B8"><span class="toc-nav-text">Ajax教學</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSON"><span class="toc-nav-text">JSON</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-JSON%E5%9F%BA%E6%9C%AC%E6%95%99%E5%AD%B8"><span class="toc-nav-text">1.JSON基本教學</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-JSON%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E5%AD%97%E4%B8%B2"><span class="toc-nav-text">2.JSON物件轉換字串</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%A3%E5%91%8A%E6%8F%90%E5%8D%87-Hoisting"><span class="toc-nav-text">宣告提升 Hoisting</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E8%AE%8A%E6%95%B8%E7%9A%84%E5%AE%A3%E5%91%8A%E6%8F%90%E5%8D%87"><span class="toc-nav-text">1.變數的宣告提升</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%87%BD%E5%BC%8F%E7%9A%84%E5%AE%A3%E5%91%8A%E6%8F%90%E5%8D%87"><span class="toc-nav-text">2.函式的宣告提升</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2020/12/12/Javascript-Basic/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

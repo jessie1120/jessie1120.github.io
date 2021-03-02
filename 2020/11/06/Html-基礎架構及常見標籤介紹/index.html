@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Html 基礎架構及常見標籤介紹 | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Html 基礎架構及常見標籤介紹</h2>
+  <p class="post-date">2020-11-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Html-基礎架構及常見標籤介紹"><a href="#Html-基礎架構及常見標籤介紹" class="headerlink" title="Html 基礎架構及常見標籤介紹"></a>Html 基礎架構及常見標籤介紹</h1><h2 id="Html是什麼？"><a href="#Html是什麼？" class="headerlink" title="Html是什麼？"></a>Html是什麼？</h2><ul>
+<li><strong>HyperText Markup Language</strong></li>
+</ul>
+<p>Html是一種基礎的技術，常用來進行網頁設計，Html可以讓瀏覽器讀取，進而呈現出視覺化的介面。</p>
+<p>Html可以標示出網頁的標題、段落、列表、表單等，或是透過語意化的標籤來讓網頁更加直觀讓搜尋引擎更容易辨識等等。</p>
+<p>Html檔案內也可以嵌入圖像或其他物件，並可以搭配CSS和Javascript創造出更為豐富的網頁介面。</p>
+<p><strong>Html是網頁的結構</strong><br><strong>CSS是網頁的外貌和排版</strong><br><strong>Javascript是網頁的行為</strong></p>
+<h2 id="Html的基本架構"><a href="#Html的基本架構" class="headerlink" title="Html的基本架構"></a>Html的基本架構</h2><p>以下這個圖包含了Html檔案內元素的結構</p>
+<p><img src="https://i.imgur.com/dUf0HTY.png"><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/HTML_element#Syntax">(Image from wikipedia)</a></p>
+<p>一個元素(Element)由起始標籤(Start tag / Open tag)、內容(Content)、結束標籤(End tag / Close tag)組成。</p>
+<p>而元素若含有屬性(Attribute)則會寫在起始標籤內，<br>一個完整的屬性會有屬性名稱(Attribute Name)、等號(=)、屬性值(Attribute Value)</p>
+<hr>
+<p>以下是一個Html檔案的基本結構，可以發現其中的Tag也都是兩兩一組，一為起始，一為結束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>第一行的<code>&lt;!DOCTYPE html&gt;</code>是一個宣告，宣告此檔案是用Html格式寫成的，讓瀏覽器用Html格式來讀取這個檔案。</p>
+<p>第二跟第九行的<code>&lt;html&gt;</code>以及<code>&lt;/html&gt;</code>是這整個網頁的根元素，包含了整個網頁的元素，而其中的文字則描述了整個網頁。</p>
+<p>第三跟第五行的<code>&lt;head&gt;</code> <code>&lt;/head&gt;</code>包含了<br>第四行的<code>&lt;title&gt;</code> <code>&lt;/title&gt;</code>：網頁標題(在瀏覽器分頁欄看見的文字)<br>而一些外部代碼如：<br>CSS：使用<code>&lt;style&gt;</code> <code>&lt;/style&gt;</code>標籤<br>Javascript：使用<code>&lt;script&gt;</code> <code>&lt;/script&gt;</code>標籤<br>也會寫在<code>&lt;head&gt;</code> <code>&lt;/head&gt;</code>內。</p>
+<p>第六和第八行的<code>&lt;body&gt;</code> <code>&lt;/body&gt;</code>則是網頁的內容，<br>其中在第七行的<code>&lt;p&gt;</code> <code>&lt;/p&gt;</code>代表了一個段落。</p>
+<h2 id="Html常用標籤介紹"><a href="#Html常用標籤介紹" class="headerlink" title="Html常用標籤介紹"></a>Html常用標籤介紹</h2><ul>
+<li><h3 id="標題-lt-h1-gt-lt-h6-gt"><a href="#標題-lt-h1-gt-lt-h6-gt" class="headerlink" title="標題&lt;h1&gt;~ &lt;h6&gt;"></a>標題<code>&lt;h1&gt;</code>~ <code>&lt;h6&gt;</code></h3><p>字體會由大至小變化</p>
+</li>
+<li><h3 id="段落-lt-p-gt-lt-p-gt"><a href="#段落-lt-p-gt-lt-p-gt" class="headerlink" title="段落&lt;p&gt; &lt;/p&gt;"></a>段落<code>&lt;p&gt;</code> <code>&lt;/p&gt;</code></h3></li>
+</ul>
+<p>用來呈現內容的標籤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;我是h1&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;h2&gt;我是h2&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;h3&gt;我是h3&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;h4&gt;我是h4&lt;&#x2F;h4&gt;</span><br><span class="line">&lt;h5&gt;我是h5&lt;&#x2F;h5&gt;</span><br><span class="line">&lt;h6&gt;我是h6&lt;&#x2F;h6&gt;</span><br><span class="line">&lt;p&gt;我是內容&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>實際顯示會長這樣↓<br><img src="https://i.imgur.com/T7YOpHX.png"></p>
+<ul>
+<li><h3 id="有序列表：Ordered-Lists-lt-ol-gt-lt-ol-gt-lt-li-gt"><a href="#有序列表：Ordered-Lists-lt-ol-gt-lt-ol-gt-lt-li-gt" class="headerlink" title="有序列表：Ordered Lists &lt;ol&gt; &lt;/ol&gt; &lt;li&gt;"></a>有序列表：Ordered Lists <code>&lt;ol&gt;</code> <code>&lt;/ol&gt;</code> <code>&lt;li&gt;</code></h3><p>有序列表是有順序的列出其中的內容，內容由<code>&lt;li&gt;</code> <code>&lt;/li&gt;</code>內的文字決定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">  &lt;li&gt;我會有數字&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;我會有數字&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;我會有數字&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ol&gt;</span><br></pre></td></tr></table></figure>
+<p>實際顯示如下↓<br><img src="https://i.imgur.com/XCyOfa5.png"></p>
+</li>
+<li><h3 id="無序列表：Unordered-Lists-lt-ul-gt-lt-ul-gt-lt-li-gt"><a href="#無序列表：Unordered-Lists-lt-ul-gt-lt-ul-gt-lt-li-gt" class="headerlink" title="無序列表：Unordered Lists &lt;ul&gt; &lt;/ul&gt; &lt;li&gt;"></a>無序列表：Unordered Lists <code>&lt;ul&gt;</code> <code>&lt;/ul&gt;</code> <code>&lt;li&gt;</code></h3><p>無序列表則是沒有順序的列出其中的內容，內容由<code>&lt;li&gt;</code> <code>&lt;/li&gt;</code>內的文字決定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;我只是列表&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;我只是列表&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;我只是列表&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+<p>實際顯示如下↓<br><img src="https://i.imgur.com/8tuF0rg.png"></p>
+</li>
+<li><h3 id="圖片：Image-lt-img-gt"><a href="#圖片：Image-lt-img-gt" class="headerlink" title="圖片：Image &lt;img&gt;"></a>圖片：Image <code>&lt;img&gt;</code></h3><p>可以用來插入圖片，且<strong>不需要</strong>使用close tag</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;路徑&quot; alt&#x3D;&quot;註解&quot; title&#x3D;&quot;圖片標題&quot;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="超連結：-lt-a-gt-lt-a-gt"><a href="#超連結：-lt-a-gt-lt-a-gt" class="headerlink" title="超連結：&lt;a&gt; &lt;/a&gt;"></a>超連結：<code>&lt;a&gt;</code> <code>&lt;/a&gt;</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;路徑&quot;&gt;&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="表格：Table-lt-table-gt-lt-table-gt"><a href="#表格：Table-lt-table-gt-lt-table-gt" class="headerlink" title="表格：Table &lt;table&gt; &lt;/table&gt;"></a>表格：Table <code>&lt;table&gt;</code> <code>&lt;/table&gt;</code></h3><ul>
+<li>橫列：Table Row <code>&lt;tr&gt;</code> <code>&lt;/tr&gt;</code></li>
+<li>欄位(決定行數)：Table Data <code>&lt;td&gt;</code> <code>&lt;/td&gt;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;國家&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;首都&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;語言&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;地區&lt;&#x2F;td&gt;</span><br><span class="line">  &lt;&#x2F;tr&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;美國&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;華盛頓&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;英文&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;北美洲&lt;&#x2F;td&gt;</span><br><span class="line">  &lt;&#x2F;tr&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;韓國&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;首爾&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;韓文&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;亞洲&lt;&#x2F;td&gt;</span><br><span class="line">  &lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+實際顯示如下↓<br><img src="https://i.imgur.com/wF1ufdA.png"><br>有三組<code>&lt;tr&gt;</code>標籤所以有三個橫列，而每個<code>&lt;tr&gt;</code>標籤內有四組<code>&lt;td&gt;</code>標籤，所以共有四行。</li>
+</ul>
+</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#HTML" >
+    <span class="tag-code">HTML</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/11/05/Command-Line-Settings/">
+        <span class="nav-arrow">← </span>
+        
+          Command Line Settings
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/11/08/Git-%E5%9F%BA%E7%A4%8E%E4%BB%8B%E7%B4%B9%E3%80%81%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9%E5%8F%8AGithub%E5%AF%A6%E4%BD%9C%E7%B7%B4%E7%BF%92/">
+        
+          Git 基礎介紹、常用指令介紹及Github實作練習
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Html-%E5%9F%BA%E7%A4%8E%E6%9E%B6%E6%A7%8B%E5%8F%8A%E5%B8%B8%E8%A6%8B%E6%A8%99%E7%B1%A4%E4%BB%8B%E7%B4%B9"><span class="toc-nav-text">Html 基礎架構及常見標籤介紹</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Html%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-nav-text">Html是什麼？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Html%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%A7%8B"><span class="toc-nav-text">Html的基本架構</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Html%E5%B8%B8%E7%94%A8%E6%A8%99%E7%B1%A4%E4%BB%8B%E7%B4%B9"><span class="toc-nav-text">Html常用標籤介紹</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A8%99%E9%A1%8C-lt-h1-gt-lt-h6-gt"><span class="toc-nav-text">標題&lt;h1&gt;~ &lt;h6&gt;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%AE%B5%E8%90%BD-lt-p-gt-lt-p-gt"><span class="toc-nav-text">段落&lt;p&gt; &lt;&#x2F;p&gt;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8%EF%BC%9AOrdered-Lists-lt-ol-gt-lt-ol-gt-lt-li-gt"><span class="toc-nav-text">有序列表：Ordered Lists &lt;ol&gt; &lt;&#x2F;ol&gt; &lt;li&gt;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%84%A1%E5%BA%8F%E5%88%97%E8%A1%A8%EF%BC%9AUnordered-Lists-lt-ul-gt-lt-ul-gt-lt-li-gt"><span class="toc-nav-text">無序列表：Unordered Lists &lt;ul&gt; &lt;&#x2F;ul&gt; &lt;li&gt;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9C%96%E7%89%87%EF%BC%9AImage-lt-img-gt"><span class="toc-nav-text">圖片：Image &lt;img&gt;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%85%E9%80%A3%E7%B5%90%EF%BC%9A-lt-a-gt-lt-a-gt"><span class="toc-nav-text">超連結：&lt;a&gt; &lt;&#x2F;a&gt;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%A8%E6%A0%BC%EF%BC%9ATable-lt-table-gt-lt-table-gt"><span class="toc-nav-text">表格：Table &lt;table&gt; &lt;&#x2F;table&gt;</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2020/11/06/Html-基礎架構及常見標籤介紹/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

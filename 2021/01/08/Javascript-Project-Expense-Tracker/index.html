@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript Project - Expense Tracker | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript Project - Expense Tracker</h2>
+  <p class="post-date">2021-01-08</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Expense-Tracker-記帳列表實做筆記"><a href="#Expense-Tracker-記帳列表實做筆記" class="headerlink" title="Expense Tracker 記帳列表實做筆記"></a>Expense Tracker 記帳列表實做筆記</h1><ul>
+<li><a href="#HTML"> HTML</a></li>
+<li><a href="#CSS"> CSS</a></li>
+<li><a href="#Javascript-Part-1---addTransactionDOM-amp-init-function"> Javascript Part 1 - <code>addTransactionDOM</code> &amp; <code>init</code> function</a></li>
+<li><a href="#Javascript-Part-2---updateValues-function"> Javascript Part 2 - <code>updateValues</code> function</a></li>
+<li><a href="#Javascript-Part-3---Submit-Event-%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"> Javascript Part 3 - <code>Submit Event</code> 提交事件</a></li>
+<li><ul>
+<li><a href="#addTransaction-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F-amp-generateID-%E4%BA%82%E6%95%B8%E7%94%A2%E7%94%9FID%E5%87%BD%E5%BC%8F"><code>addTransaction</code> 列表添加函式 &amp; <code>generateID</code> 亂數產生ID函式</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#removeTransaction-%E5%88%AA%E9%99%A4%E5%88%97%E8%A1%A8%E5%87%BD%E5%BC%8F"><code>removeTransaction</code> 刪除列表函式</a></li>
+</ul>
+</li>
+<li><a href="#Javascript-Part-4---Local-Storage"> Javascript Part 4 - Local Storage</a></li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>HTML的部分沒有特別的結構，主要由三個部分組成<br>但還是一樣有<code>jquery</code>的引用↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;ajax.googleapis.com&#x2F;ajax&#x2F;libs&#x2F;jquery&#x2F;3.5.1&#x2F;jquery.min.js&quot;&gt;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>1. 上方標題及金額紀錄區塊</strong></p>
+<p><strong>2. 中間帳目列表區域，這邊比較特別一點，不先把列表元素<code>&lt;li&gt;&lt;li&gt;</code>做出來，而是用動態產生。</strong></p>
+<p><strong>3. 輸入區塊，一樣使用表單<code>Form</code>的方式製作</strong></p>
+<p>附上示意圖↓<br><img src="https://i.imgur.com/G4SBGJR.png"></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>這次在多次重複使用的陰影部分融入了變數的形式，讓維護或修改時更方便並迅速。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  --<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">1px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.12</span>), <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.24</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* box-shadow: var(--box-shadow); 需要使用時填入*/</span></span><br></pre></td></tr></table></figure>
+<p>影片課程中有個flex的用法我覺得很好，紀錄一下，<br>比起在子元素用flex屬性調整，在父元素設定自動切分很簡潔。</p>
+<p>另外是利用區塊選擇器製作中央分隔線的做法。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.inc-exp-container</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;                <span class="comment">/*設定為1，可以讓子元素自動平分空間*/</span></span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.inc-exp-container</span> &gt; <span class="selector-tag">div</span><span class="selector-pseudo">:first</span>-of-type &#123;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">1px</span> solid <span class="number">#dedede</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最後是調整刪除按鈕的設定，僅列出部分程式碼：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.delete-btn</span> &#123;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;                    <span class="comment">/*指標設定*/</span></span><br><span class="line">  <span class="attribute">position</span>: absolute;                 <span class="comment">/*絕對定位*/</span></span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">100%</span>, -<span class="number">50%</span>);  <span class="comment">/*位置微調*/</span></span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;                         <span class="comment">/*隱藏*/</span></span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">0.3s</span> ease;      <span class="comment">/*顯示+動畫效果*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.list</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.delete-btn</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;                         <span class="comment">/*碰觸顯示按鈕*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-1-addTransactionDOM-amp-init-function"><a href="#Javascript-Part-1-addTransactionDOM-amp-init-function" class="headerlink" title="Javascript Part 1 - addTransactionDOM &amp; init function"></a>Javascript Part 1 - <code>addTransactionDOM</code> &amp; <code>init</code> function</h2><p>這次一樣會比較原生寫法跟<code>jquery</code>寫法的小差異，<br>其實我自己的感覺主要的差別還是在變數宣告、方法使用兩部分。</p>
+<p>原生的部分依然是從變數宣告開始</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> balance = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;balance&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> money_plus = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;money-plus&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> money_minus = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;money-minus&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;list&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> form = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;form&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> text = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;text&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> amount = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;amount&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>雖然<code>jquery</code>利用選擇器很方便，但為了方便，先把會遇到的選擇器放在上方，需要時直接複製就好。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#balance&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;#money-plus&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;#money-minus&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;#list&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;#form&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;#text&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;#amount&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="addTransactionDOM-列表添加函式"><a href="#addTransactionDOM-列表添加函式" class="headerlink" title="addTransactionDOM() 列表添加函式"></a><code>addTransactionDOM()</code> 列表添加函式</h3><p>這個函式的步驟大致是這樣：</p>
+<ol>
+<li>宣告變數+判斷式 =&gt; 加上正負號</li>
+<li><code>createElement()</code> =&gt; 創建新的列表元素</li>
+<li>宣告變數+判斷式 =&gt; 加上class正負屬性</li>
+<li>列表內增加文字及按鈕(動態方式) =&gt; 文字、正負符號、金額數字皆為動態 </li>
+</ol>
+<p>– 這邊有一個<code>Math.abs()</code> =&gt; 傳回絕對值 =&gt; 這邊用意是去掉負數的減號才不會重複<br>5. <code>appendChild()</code> =&gt; 將剛剛創建的元素丟到指定的父元素裡。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTransactionDOM</span>(<span class="params">transaction</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> sign = transaction.amount &lt; <span class="number">0</span> ? <span class="string">&#x27;-&#x27;</span> : <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> item = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  item.classList.add(transaction.amount &lt; <span class="number">0</span> ? <span class="string">&#x27;minus&#x27;</span> : <span class="string">&#x27;plus&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  item.innerHTML = <span class="string">`</span></span><br><span class="line"><span class="string">    <span class="subst">$&#123;transaction.text&#125;</span> &lt;span&gt;<span class="subst">$&#123;sign&#125;</span><span class="subst">$&#123;<span class="built_in">Math</span>.abs(</span></span></span><br><span class="line"><span class="string"><span class="subst">    transaction.amount</span></span></span><br><span class="line"><span class="string"><span class="subst">  )&#125;</span>&lt;/span&gt; &lt;button class=&quot;delete-btn&quot;&gt;x&lt;/button&gt;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line"></span><br><span class="line">  list.appendChild(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>jquery</code>的部分主要是創建列表元素跟最後丟到指定父元素的方法不同。</strong></p>
+<ul>
+<li><code>.appendTo()</code> = 將內容添加至某個選取器</li>
+<li><code>.append()</code> = 在某個選取器裡添加內容</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://api.jquery.com/appendto/"><code>append()</code>跟<code>appendTo()</code>使用說明</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTransactionDOM</span>(<span class="params">transaction</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> sign = transaction.amount &lt; <span class="number">0</span> ? <span class="string">&#x27;-&#x27;</span> : <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">    <span class="keyword">const</span> item = $(<span class="string">&#x27;&lt;li&gt;&lt;/li&gt;&#x27;</span>).appendTo(<span class="string">&#x27;#list&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    item.addClass(transaction.amount &lt; <span class="number">0</span> ? <span class="string">&#x27;minus&#x27;</span> : <span class="string">&#x27;plus&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    item.html(<span class="string">`<span class="subst">$&#123;transaction.text&#125;</span></span></span><br><span class="line"><span class="string">    &lt;span&gt;<span class="subst">$&#123;sign&#125;</span><span class="subst">$&#123;<span class="built_in">Math</span>.abs(transaction.amount)&#125;</span>&lt;/span&gt; </span></span><br><span class="line"><span class="string">    &lt;button class=&quot;delete-btn&quot;&gt;x&lt;/button&gt; </span></span><br><span class="line"><span class="string">    `</span>);</span><br><span class="line">    item.appendTo(<span class="string">&#x27;#list&#x27;</span>); <span class="comment">// 相等於 $(&#x27;#list&#x27;).append(item);</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="init-初始化函式"><a href="#init-初始化函式" class="headerlink" title="init() 初始化函式"></a><code>init()</code> 初始化函式</h3><p>這邊會先用自行輸入的示範物件來顯示在畫面上，之後再加入動態創建的物件。<br>先將陣列丟進變數中，用<code>forEach()</code>將物件內資料先跑過一次，<br>最後呼叫函式讓頁面載入時可以直接顯示。<br>這個部分<code>jquery</code>幾乎是一樣的，就不重複說明。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dummyTransactions = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&#x27;Flower&#x27;</span>, <span class="attr">amount</span>: -<span class="number">20</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">&#x27;Salary&#x27;</span>, <span class="attr">amount</span>: <span class="number">300</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">text</span>: <span class="string">&#x27;Book&#x27;</span>, <span class="attr">amount</span>: -<span class="number">10</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">text</span>: <span class="string">&#x27;Camera&#x27;</span>, <span class="attr">amount</span>: <span class="number">150</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> transactions = dummyTransactions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  list.innerHTML = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  transactions.forEach(addTransactionDOM);</span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-2-updateValues-function"><a href="#Javascript-Part-2-updateValues-function" class="headerlink" title="Javascript Part 2 - updateValues function"></a>Javascript Part 2 - <code>updateValues</code> function</h2><p>這個函式的步驟大致是這樣：</p>
+<ol>
+<li>處理陣列中金額<code>amount</code>的值 =&gt; 用<code>map()</code>方法處理：運算後回傳新陣列<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><code>map()</code>方法說明</a></li>
+<li>計算累計金額 =&gt; 用<code>reduce()</code>方法處理：累加值並回傳<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>reduce()</code>方法說明</a></li>
+<li>計算收入 =&gt; 用<code>filter()</code>方法處理：經過內部函式處理後，將通過之元素回傳為新陣列。<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>filter()</code>方法說明</a></li>
+<li>計算支出 =&gt; 用<code>filter()</code>方法處理，最後乘上-1變負數。</li>
+<li>將結果丟入內文，顯示在畫面上。</li>
+<li>最後在把這個函式丟進<code>init function</code>，讓它初始就能夠更新資訊。</li>
+</ol>
+<p>這邊影片的函式呢是利用箭頭函式寫法，<br>但我為了記錄邏輯讓自己不要搞錯，所以用比較原始的函式寫法，但輸出結果是沒變的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateValues</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> amounts = transactions.map(<span class="function"><span class="params">transaction</span> =&gt;</span> transaction.amount);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> total = amounts.reduce(<span class="function">(<span class="params">acc, item</span>) =&gt;</span> (acc += item), <span class="number">0</span>).toFixed(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> income = amounts</span><br><span class="line">    .filter(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">0</span>)</span><br><span class="line">    .reduce(<span class="function">(<span class="params">acc, item</span>) =&gt;</span> (acc += item), <span class="number">0</span>)</span><br><span class="line">    .toFixed(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> expense = (</span><br><span class="line">    amounts.filter(<span class="function"><span class="params">item</span> =&gt;</span> item &lt; <span class="number">0</span>).reduce(<span class="function">(<span class="params">acc, item</span>) =&gt;</span> (acc += item), <span class="number">0</span>) *</span><br><span class="line">    -<span class="number">1</span></span><br><span class="line">  ).toFixed(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">  balance.innerText = <span class="string">`$<span class="subst">$&#123;total&#125;</span>`</span>;</span><br><span class="line">  money_plus.innerText = <span class="string">`$<span class="subst">$&#123;income&#125;</span>`</span>;</span><br><span class="line">  money_minus.innerText = <span class="string">`$<span class="subst">$&#123;expense&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我這邊的寫法看起來比較複雜，但比較符合我的原始邏輯思考方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateValues</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> amounts = transactions</span><br><span class="line">        .map(<span class="function"><span class="keyword">function</span>(<span class="params">transaction</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> transaction.amount;</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="keyword">const</span> total = amounts</span><br><span class="line">        .reduce((<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, item</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> accumulator += item;    <span class="comment">// accumulator = accumulator + item;</span></span><br><span class="line">        &#125;),<span class="number">0</span>)</span><br><span class="line">        .toFixed(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">const</span> income = amounts</span><br><span class="line">        .filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> item &gt; <span class="number">0</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .reduce((<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, item</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> accumulator += item;    <span class="comment">// accumulator = accumulator + item;</span></span><br><span class="line">        &#125;),<span class="number">0</span>) </span><br><span class="line">        .toFixed(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">const</span> expense = (amounts</span><br><span class="line">        .filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item &lt; <span class="number">0</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .reduce((<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, item</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> accumulator += item;    </span><br><span class="line">        &#125;),<span class="number">0</span>) * -<span class="number">1</span>)</span><br><span class="line">        .toFixed(<span class="number">2</span>);   </span><br><span class="line"></span><br><span class="line">        $(<span class="string">&#x27;#balance&#x27;</span>).text(<span class="string">`$<span class="subst">$&#123;total&#125;</span>`</span>);</span><br><span class="line">        $(<span class="string">&#x27;#money-plus&#x27;</span>).text(<span class="string">`$<span class="subst">$&#123;income&#125;</span>`</span>);</span><br><span class="line">        $(<span class="string">&#x27;#money-minus&#x27;</span>).text(<span class="string">`$<span class="subst">$&#123;expense&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-3-Submit-Event-提交事件"><a href="#Javascript-Part-3-Submit-Event-提交事件" class="headerlink" title="Javascript Part 3 - Submit Event 提交事件"></a>Javascript Part 3 - Submit Event 提交事件</h2><p>這個事件監聽，只是要在提交的時候跑一個函式<code>addTransaction()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS原生寫法</span></span><br><span class="line">form.addEventListener(<span class="string">&#x27;submit&#x27;</span>, addTransaction);</span><br><span class="line"><span class="comment">// jquery寫法</span></span><br><span class="line">$(<span class="string">&#x27;#form&#x27;</span>).submit(addTransaction);</span><br></pre></td></tr></table></figure>
+
+<h3 id="addTransaction-列表添加函式-amp-generateID-亂數產生ID函式"><a href="#addTransaction-列表添加函式-amp-generateID-亂數產生ID函式" class="headerlink" title="addTransaction 列表添加函式  &amp; generateID 亂數產生ID函式"></a><code>addTransaction</code> 列表添加函式  &amp; <code>generateID</code> 亂數產生ID函式</h3><p>這兩個函式主要功能就是能夠將輸入的值轉為我們在畫面上呈現的狀態。</p>
+<p>函式的步驟大致是這樣：</p>
+<ol>
+<li>先判斷文字<code>text</code>或金額<code>amout</code>是否為空 =&gt; 若為空 =&gt;顯示<code>alert</code></li>
+<li>若不為空 =&gt; 創建<code>transaction</code>陣列 =&gt;包含<code>id</code>、輸入文字的值、輸入金額的值。</li>
+<li>用<code>push()</code>方法處理陣列：每次輸入就持續增加陣列內的元素</li>
+</ol>
+<p>-<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>push()</code>方法說明</a><br>4. 添加列表 =&gt; <code>addTransactionDOM</code>函式<br>5. 更新畫面金額變動 =&gt; <code>updateValues</code>函式<br>6. 最後的部分是讓預設變回空白。</p>
+<p>這邊有個小地方要注意金額的部分<code>amount.value</code>使用+號將字串轉為數字型別</p>
+<p>再來是ID的建立，這邊是一個創造亂數的函式<code>generateID</code><br>原理是這樣的：</p>
+<ol>
+<li><code>Math.random()</code>：會隨機產生出0~1之間的小數</li>
+<li><code>Math.floor()</code>：會將小數點捨去並回傳小於等於所給數字的最大整數。</li>
+<li>將亂數產生的小數乘上你需要的倍數</li>
+<li>倍數 = 隨機整數的數量(乘100倍就會產生100個隨機的整數)</li>
+</ol>
+<p>這邊我自己的寫法有用了一個縮寫<code>1e5</code>，這個意思是1後面加幾個0<br>所以<code>1e5</code>= <code>100000</code>，可以避免太多0打錯。</p>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10197904">亂數產生原理-參考文章傳送門</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTransaction</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (text.value.trim() === <span class="string">&#x27;&#x27;</span> || amount.value.trim() === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&#x27;Please add a text and amount&#x27;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> transaction = &#123;</span><br><span class="line">      id: generateID(),</span><br><span class="line">      text: text.value,</span><br><span class="line">      amount: +amount.value</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    transactions.push(transaction);</span><br><span class="line"></span><br><span class="line">    addTransactionDOM(transaction);</span><br><span class="line"></span><br><span class="line">    updateValues();</span><br><span class="line"></span><br><span class="line">    text.value = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    amount.value = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate random ID</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateID</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100000000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>jquery</code>的部分注意選擇器不要弄錯，還有取值的方法不同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTransaction</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>($(<span class="string">&#x27;#text&#x27;</span>).val().trim() === <span class="string">&#x27;&#x27;</span> || $(<span class="string">&#x27;#amount&#x27;</span>).val().trim() === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">        alert(<span class="string">&#x27;Please add a text and amount&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> transaction = &#123;</span><br><span class="line">            id: generateID(),</span><br><span class="line">            text: $(<span class="string">&#x27;#text&#x27;</span>).val(),</span><br><span class="line">            amount: +$(<span class="string">&#x27;#amount&#x27;</span>).val()</span><br><span class="line">        &#125;; </span><br><span class="line"></span><br><span class="line">        transactions.push(transaction);</span><br><span class="line"></span><br><span class="line">        addTransactionDOM(transaction);</span><br><span class="line">        updateValues();</span><br><span class="line"></span><br><span class="line">        $(<span class="string">&#x27;#text&#x27;</span>).val(<span class="string">&#x27;&#x27;</span>); </span><br><span class="line">        $(<span class="string">&#x27;#amount&#x27;</span>).val(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateID</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">1e5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="removeTransaction-刪除列表函式"><a href="#removeTransaction-刪除列表函式" class="headerlink" title="removeTransaction 刪除列表函式"></a><code>removeTransaction</code> 刪除列表函式</h3><p>這個函式的功能就是讓我們刪除列表，這個函式會綁定在 <strong>點擊刪除按鈕</strong> 的事件。<br>這邊的事件寫法採用<code>inline</code>方式，在按鈕的屬性內建立事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;delete-btn&quot;</span> onclick=<span class="string">&quot;removeTransaction($&#123;transaction.id&#125;)&quot;</span>&gt;x</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>函式的步驟：</p>
+<ol>
+<li>使用<code>filter()</code>方法處理：經過內部函式處理後，將通過之元素回傳為新陣列。<br>=&gt; 在這個函式中會是這樣的，將相同ID的元素移除 (我們點擊的列表)<br>=&gt; 只回傳不相同的元素 (我們沒有點擊的列表)</li>
+<li>接著初始化<code>init</code>讓畫面更新。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeTransaction</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  transactions = transactions.filter(<span class="function"><span class="params">transaction</span> =&gt;</span> transaction.id !== id);</span><br><span class="line"></span><br><span class="line">  init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+這邊我一樣用我自己的思考邏輯寫函式才不會搞混，但箭頭函式真的很簡潔。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeTransaction</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    transactions = transactions</span><br><span class="line">        .filter(<span class="function"><span class="keyword">function</span>(<span class="params">transaction</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> transaction.id !== id;</span><br><span class="line">        &#125;)</span><br><span class="line">    init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-4-Local-Storage"><a href="#Javascript-Part-4-Local-Storage" class="headerlink" title="Javascript Part 4 - Local Storage"></a>Javascript Part 4 - Local Storage</h2>這邊做的功能是，在重整後可以保留之前的列表，<br>將這些內容存在<code>Local Storage</code>本地儲存空間，在需要時可以再拿出來進行運用。<br>同時也避免關閉分頁後的資料損失。</li>
+</ol>
+<p>首先我們先建立一個變數<code>localStorageTransactions</code>將存在<code>local storage</code>的資料拉出來。<br><code>JSON.parse()</code>：轉換拉出來的字串資料 =&gt; 陣列array</p>
+<p>接著在建立一個變數<code>transactions</code> =&gt;<br>判斷不為空 =&gt; 使用<code>localStorageTransactions</code>將資料轉為陣列<br>為空 =&gt; 建立空陣列<code>[]</code></p>
+<p>接著做一個函式<code>updateLocalStorage()</code>將輸入的資料陣列轉為字串存入<code>Local Storage</code><br>使用<code>JSON.stringify</code></p>
+<p>最後在添加列表及刪除列表中加入這個函式，讓添加或刪除時可以更新<code>Local Storage</code>的狀態。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> localStorageTransactions = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;transactions&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> transactions = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;transactions&#x27;</span>) </span><br><span class="line">!== <span class="literal">null</span> </span><br><span class="line">? localStorageTransactions : [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateLocalStorage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;transactions&#x27;</span>, <span class="built_in">JSON</span>.stringify(transactions));</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/01/06/Javascript-Project-Exchange-Rate-Calculator/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript Project - Exchange Rate Calculator
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/01/18/Javascript-Project-Music-Player/">
+        
+          Javascript Project - Music Player
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Expense-Tracker-%E8%A8%98%E5%B8%B3%E5%88%97%E8%A1%A8%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Expense Tracker 記帳列表實做筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTML"><span class="toc-nav-text">HTML</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS"><span class="toc-nav-text">CSS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-1-addTransactionDOM-amp-init-function"><span class="toc-nav-text">Javascript Part 1 - addTransactionDOM &amp; init function</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#addTransactionDOM-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">addTransactionDOM() 列表添加函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#init-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">init() 初始化函式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-2-updateValues-function"><span class="toc-nav-text">Javascript Part 2 - updateValues function</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-3-Submit-Event-%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"><span class="toc-nav-text">Javascript Part 3 - Submit Event 提交事件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#addTransaction-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F-amp-generateID-%E4%BA%82%E6%95%B8%E7%94%A2%E7%94%9FID%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">addTransaction 列表添加函式  &amp; generateID 亂數產生ID函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#removeTransaction-%E5%88%AA%E9%99%A4%E5%88%97%E8%A1%A8%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">removeTransaction 刪除列表函式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-4-Local-Storage"><span class="toc-nav-text">Javascript Part 4 - Local Storage</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

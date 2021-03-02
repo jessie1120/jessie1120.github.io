@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript Project - Movie Seat Booking | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript Project - Movie Seat Booking</h2>
+  <p class="post-date">2021-01-05</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Movie-Seat-Booking-電影院訂位網頁實做筆記"><a href="#Movie-Seat-Booking-電影院訂位網頁實做筆記" class="headerlink" title="Movie Seat Booking 電影院訂位網頁實做筆記"></a>Movie Seat Booking 電影院訂位網頁實做筆記</h1><ul>
+<li><a href="#HTML"> HTML</a></li>
+<li><a href="#CSS"> CSS</a></li>
+<li><a href="#Javascript-Part-1---Seat-Selct"> Javascript Part 1 - Seat Selct</a></li>
+<li><ul>
+<li><a href="#Seat-Select-Event-%E5%BA%A7%E4%BD%8D%E9%81%B8%E6%93%87%E4%BA%8B%E4%BB%B6"><code>Seat Select Event</code> 座位選擇事件</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#updateSelectedCount%E6%9B%B4%E6%96%B0%E9%81%B8%E5%8F%96%E6%95%B8%E9%87%8F%E5%87%BD%E5%BC%8F"><code>updateSelectedCount</code> 更新選取數量函式</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#Movie-Select-Event%E9%9B%BB%E5%BD%B1%E9%81%B8%E6%93%87%E4%BA%8B%E4%BB%B6"><code>Movie Select Event</code>電影選擇事件</a></li>
+</ul>
+</li>
+<li><a href="#Javascript-Part-2---Local-Storage"> Javascript Part 2 - Local-Storage</a></li>
+<li><ul>
+<li><a href="#setMovieData-%E6%9B%B4%E6%96%B0%E9%9B%BB%E5%BD%B1%E8%B3%87%E6%96%99%E5%87%BD%E5%BC%8F"><code>setMovieData</code> 更新電影資料函式</a></li>
+</ul>
+</li>
+<li><a href="#Javascript-Part-3---Populate-UI-With-Saved-Data"> Javascript Part 3 - Populate UI With Saved Data</a></li>
+<li><ul>
+<li><a href="#populateUI-%E5%9B%9E%E5%A1%AB%E5%87%BD%E5%BC%8F"><code>populateUI</code> 回填函式</a> </li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>HTML的部分，在選擇電影的地方使用的是<code>select</code>標籤+上<code>option</code>來做出下拉選單的樣式。<br>同時在每個選項有加入代表票價的值<code>value</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;movie-container&quot;&gt;</span><br><span class="line">  &lt;label&gt;Pick a movie:&lt;&#x2F;label&gt;</span><br><span class="line">  &lt;select id&#x3D;&quot;movie&quot;&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;10&quot;&gt;Avengers: Endgame ($10)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;12&quot;&gt;Joker ($12)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;8&quot;&gt;Toy Story 4 ($8)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;9&quot;&gt;The Lion King ($9)&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>再來在座位選擇的部分，上方用<code>ul</code>跟<code>li</code>的列表作出座位狀態的示意表。<br>下方則是先放置一個螢幕區塊，再將每一個<code>div</code>區塊做成一個座位，擷取部分程式碼↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class&#x3D;&quot;showcase&quot;&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;small&gt;N&#x2F;A&lt;&#x2F;small&gt;</span><br><span class="line">  &lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat selected&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;small&gt;Selected&lt;&#x2F;small&gt;</span><br><span class="line">  &lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat occupied&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;small&gt;Occupied&lt;&#x2F;small&gt;</span><br><span class="line">  &lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;screen&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;row&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat occupied&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat occupied&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>最後是在下方做出顯示目前選擇座位及總計票價的文字敘述，<br>將之後需要使用<code>javascript</code>進行變更的文字用<code>span</code>標籤包覆並給定id讓後續選取更方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">  You have selected &lt;span id&#x3D;&quot;count&quot;&gt;0&lt;&#x2F;span&gt; seats for a price of $&lt;span</span><br><span class="line">    id&#x3D;&quot;total&quot;</span><br><span class="line">    &gt;0&lt;&#x2F;span</span><br><span class="line">  &gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>CSS的部分，網頁的整體布局以<code>Flex</code>為主，因為只是需要置中，較為方便。<br>其中有幾個指令這邊紀錄一下。<br><code>appearance</code>:由於不同瀏覽器的支援不同，針對不同瀏覽器的預設樣式修正。<br><code>macOS</code>使用的<code>safari</code>需要<code>-webkit-appearance: none;</code>來防止預設的瀏覽器樣式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.movie-container</span> select &#123;</span><br><span class="line">  -moz-appearance: none;</span><br><span class="line">  -webkit-appearance: none;</span><br><span class="line">  appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>針對已選擇座位及未選擇座位，預先設定好CSS讓之後Javascript操作只需要修改className即可。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.seat</span><span class="selector-class">.selected</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#6feaf6</span>;                <span class="comment">/*已選擇座位顏色*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-class">.occupied</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;                   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">2</span>) &#123;                      <span class="comment">/*利用特定位置選擇器做出走道*/</span></span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-pseudo">:nth-last-of-type</span>(<span class="number">2</span>) &#123;                 <span class="comment">/*利用特定位置選擇器做出走道*/</span></span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.occupied</span>)<span class="selector-pseudo">:hover</span> &#123;                <span class="comment">/*選擇器 =&gt; 未被選擇座位碰觸時放大*/</span></span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.showcase</span> <span class="selector-class">.seat</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.occupied</span>)<span class="selector-pseudo">:hover</span> &#123;      <span class="comment">/*選擇器 =&gt; 上方示意區域取消效果*/</span></span><br><span class="line">  <span class="attribute">cursor</span>: default;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>電影螢幕的部分還有用到一個CSS的3D透視效果<code>perspective</code>，數值越大效果越好。<br>搭配本身區塊的傾斜<code>transform: rotateX(-45deg);</code>跟陰影<code>box-shadow</code>做出類似電影院螢幕效果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">perspective</span>: <span class="number">1000px</span>;                <span class="comment">/*3D效果*/</span></span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.screen</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">15px</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(-<span class="number">45deg</span>);</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">3px</span> <span class="number">10px</span> <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.7</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-1-Seat-Selct"><a href="#Javascript-Part-1-Seat-Selct" class="headerlink" title="Javascript Part 1 - Seat Selct"></a>Javascript Part 1 - Seat Selct</h2><p>首先先宣告之後會用到的變數，這裡需要注意的是，若變數的值之後會變動，需使用<code>let</code>來宣告<br><code>const</code>宣告變數一般用在變數的值不會變動的情形。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.container&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> seats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seats:not(.occupied)&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> count = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;count&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> total = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;total&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> movieSelect = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;movie&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ticketPrice = +movieSelect.value; </span><br><span class="line"><span class="comment">// +號轉換&#x27;字串&#x27;型別為&#x27;數字&#x27;</span></span><br><span class="line"><span class="comment">// ticketPrice不能用const宣告因為value會改變，改用let(變數會重新指定value的情況)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Seat-Select-Event-座位選擇事件"><a href="#Seat-Select-Event-座位選擇事件" class="headerlink" title="Seat Select Event 座位選擇事件"></a>Seat Select Event 座位選擇事件</h3><p>將 <strong>點擊選擇座位</strong> 註冊為事件<br>點擊時先判斷點擊位置<code>class</code>含有<code>seat</code>且不含有<code>occupied</code>。<br>利用<code>toggle</code>來操作增加<code>selected</code>屬性，已有此屬性的情況會去除此屬性。<br>事件的最後會利用函數將已選擇的數量計算票價更新至下方文字區域。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 座位選擇事件Seat click event</span></span><br><span class="line">container.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    e.target.classList.contains(<span class="string">&#x27;seat&#x27;</span>) &amp;&amp;</span><br><span class="line">    !e.target.classList.contains(<span class="string">&#x27;occupied&#x27;</span>) </span><br><span class="line">    <span class="comment">//選擇點擊時class含有seat的DOM，不選擇含有occupied的</span></span><br><span class="line">  ) &#123;</span><br><span class="line">    e.target.classList.toggle(<span class="string">&#x27;selected&#x27;</span>); </span><br><span class="line">    <span class="comment">// toggle:用來增加屬性，若已有屬性則消失</span></span><br><span class="line">      updateSelectedCount();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="updateSelectedCount-更新選取數量函式"><a href="#updateSelectedCount-更新選取數量函式" class="headerlink" title="updateSelectedCount()更新選取數量函式"></a><code>updateSelectedCount()</code>更新選取數量函式</h3><p>這個函式在這邊用來更新下方文字，將我們目前選取座位的數量更新至下方並進行計算票價。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateSelectedCount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> selectedSeats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seat.selected&#x27;</span>); </span><br><span class="line">  <span class="comment">//選擇row底下含有seat.selected的物件 =&gt; 這邊會取得nodelist(node的集合)</span></span><br><span class="line">  <span class="keyword">const</span> selectedSeatsCount = selectedSeats.length; </span><br><span class="line">  <span class="comment">//length屬性可用來判斷元素的數目 =&gt; 這裡是取得nodelist內元素的數量</span></span><br><span class="line">  count.innertext = selectedSeatsCount</span><br><span class="line">  total.innertext = selectedSeatsCount * ticketPrice</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Movie-Select-Event電影選擇事件"><a href="#Movie-Select-Event電影選擇事件" class="headerlink" title="Movie Select Event電影選擇事件"></a>Movie Select Event電影選擇事件</h3><p>這邊做出另一個事件，讓我們在下拉選單更換電影，可以同步更新票價至下方文字顯示區域。<br>觸發時間 = <code>change</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">movieSelect.addEventListener(<span class="string">&#x27;change&#x27;</span> e =&gt; &#123;</span><br><span class="line">  ticketPrice = +e.target.value;   <span class="comment">//+號確保值為數字型別</span></span><br><span class="line">  updateSelectedCount();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-2-Local-Storage"><a href="#Javascript-Part-2-Local-Storage" class="headerlink" title="Javascript Part 2 - Local Storage"></a>Javascript Part 2 - Local Storage</h2><p>這邊主要需要做的功能是，在重整後可以保留之前的選取座位，<br>將這些內容存在<code>Local Storage</code>本地儲存空間，在需要時可以再拿出來進行運用。<br>同時也避免關閉分頁後的資料損失。</p>
+<p>這邊影片課程給出的功能製作思路↓</p>
+<ol>
+<li><strong>copy selected seats into array</strong><br>將已選擇座位轉換為陣列<code>array</code>。</li>
+<li><strong>map through array</strong><br>對陣列中元素進行處理</li>
+<li><strong>return a new array indexes</strong><br>回傳新陣列中元素的索引值(在陣列中的第幾個位置)</li>
+</ol>
+<p>在<strong>updateSelectedCount</strong>這個<code>function</code>內製作功能</p>
+<p>首先利用<code>...</code>運算來將我們選取的位置傳入<code>[]</code>成為陣列<code>array</code>，<br>接著利用<code>map()</code>這個<code>method</code>處理陣列中的元素，<br>返回我們選取的位置在陣列中的索引值(在陣列中哪個位置，從零開始，利用<code>indexOf()</code>方法)。</p>
+<p>接下來將我們剛剛取得的索引值存入<code>localStorage</code>，<br>這邊第一個參數作用是給定名稱，稱為<code>keyName</code>(鍵名) =&gt; 下面這個例子叫做<code>selectedSeats</code><br>第二個參數作用是給定值，稱為<code>keyValue</code>(鍵值)也就是這個<code>keyName</code>對應的值。<br>但<code>keyName</code>和<code>keyValue</code>都必須是字串型別，所以用<code>JSON.stringify()</code>將陣列轉成字串型別。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> seatsIndex = [...selectedSeats].map(<span class="function"><span class="keyword">function</span>(<span class="params">seat</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...seats].indexOf(seat);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// ...將selectedSeats這個nodelist中&#x27;所有&#x27;的值複製到這。</span></span><br><span class="line"><span class="comment">// map()會處理陣列中每個元素，最後回傳出一個新的陣列</span></span><br><span class="line"><span class="comment">// indexOf()方法會回傳元素於陣列中第一個被找到之索引(第幾個)，若不存在於陣列中則回傳 -1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedSeats&#x27;</span>, <span class="built_in">JSON</span>.stringify(seatsIndex));</span><br></pre></td></tr></table></figure>
+<h3 id="setMovieData-更新電影資料函式"><a href="#setMovieData-更新電影資料函式" class="headerlink" title="setMovieData() 更新電影資料函式"></a><code>setMovieData()</code> 更新電影資料函式</h3><p>再來我們除了選擇座位需要存入<code>localStorage</code>，選擇哪一部電影(票價)也需要存入。</p>
+<p>這樣一樣利用<code>keyName</code>+<code>keyValue</code>來存入localStorage，但由於這次的<code>keyValue</code>本身即為字串，<br>所以不用再使用<code>JSON.stringify()</code>進行轉換。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setMovieData</span>(<span class="params">movieIndex, moviePrice</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedMovieIndex&#x27;</span>, movieIndex);</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedMoviePrice&#x27;</span>, moviePrice);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著在電影選擇事件中加入此函式，這邊的<code>selectedIndex</code>就是取得<code>select</code>標籤的索引值(第幾項)<br>同時<code>e.target.selectedIndex</code> = 選擇哪一部電影，<code>e.target.value</code> = 該部電影票價。<br>這兩個東西在呼叫此函式的時候，會存入<code>localStorage</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setMovieData(e.target.selectedIndex, e.target.value);</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-3-Populate-UI-With-Saved-Data"><a href="#Javascript-Part-3-Populate-UI-With-Saved-Data" class="headerlink" title="Javascript Part 3 - Populate UI With Saved Data"></a>Javascript Part 3 - Populate UI With Saved Data</h2><h3 id="populateUI-回填函式"><a href="#populateUI-回填函式" class="headerlink" title="populateUI() 回填函式"></a><code>populateUI()</code> 回填函式</h3><p>這個函式呼叫的位置會放置在宣告變數之後，讓它可以第一個被載入，將存放的資料回填。<br>這個函式的主要功能是將剛剛存入<code>localStorage</code>的座位資料，重新放回顯示區域(畫面上)，流程如下↓</p>
+<ol>
+<li><p>首先我們將剛剛存入<code>localStorage</code>的<code>selectedSeats</code>從字串重新轉回<code>array</code><br>這邊用到的是<code>JSON.parse()</code>這個方法=&gt;將剛剛<code>setItem</code>存入<code>localStorage</code>的東西取出來。</p>
+</li>
+<li><p>開始第一次判斷，條件為<code>selectedSeats</code>不為空值，且至少須有一個在<code>localStorage</code>中。</p>
+</li>
+<li><p>第二次判斷：若通過條件，利用<code>forEach()</code>開始檢查<code>selectedSeats</code>的索引值是否存在陣列中，<br>這邊的條件 <strong>(&gt; -1)</strong> 是因為<code>indexOf()</code>這個方法確認陣列內沒有這個元素時會回傳索引值= -1。</p>
+</li>
+<li><p>通過第二次判斷之後，將class屬性+上<code>selected</code></p>
+</li>
+</ol>
+<p>接下來做一樣的事，將電影選擇的資料取出，不為空值的話，放回<code>movieSelect</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">populateUI</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> selectedSeats = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;selectedSeats&#x27;</span>));</span><br><span class="line">    <span class="keyword">if</span> (selectedSeats !== <span class="literal">null</span> &amp;&amp; selectedSeats.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        seats.forEach(<span class="function">(<span class="params">seat, index</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (selectedSeats.indexOf(index) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">                seat.classList.add(<span class="string">&#x27;selected&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> selectedMovieIndex = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;selectedMovieIndex&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (selectedMovieIndex !== <span class="literal">null</span>) &#123;</span><br><span class="line">        movieSelect.selectedIndex = selectedMovieIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最後在整個<code>js</code>的最下方呼叫一次<strong>updateSelectedCount()</strong> 函式，<br>讓我們重整時不用經過事件觸發，可以直接更新下方文字敘述。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/12/29/Javascript-Project-Form-Validator/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript Project - Form Validator
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/01/06/Javascript-Project-Exchange-Rate-Calculator/">
+        
+          Javascript Project - Exchange Rate Calculator
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Movie-Seat-Booking-%E9%9B%BB%E5%BD%B1%E9%99%A2%E8%A8%82%E4%BD%8D%E7%B6%B2%E9%A0%81%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Movie Seat Booking 電影院訂位網頁實做筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTML"><span class="toc-nav-text">HTML</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS"><span class="toc-nav-text">CSS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-1-Seat-Selct"><span class="toc-nav-text">Javascript Part 1 - Seat Selct</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Seat-Select-Event-%E5%BA%A7%E4%BD%8D%E9%81%B8%E6%93%87%E4%BA%8B%E4%BB%B6"><span class="toc-nav-text">Seat Select Event 座位選擇事件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#updateSelectedCount-%E6%9B%B4%E6%96%B0%E9%81%B8%E5%8F%96%E6%95%B8%E9%87%8F%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">updateSelectedCount()更新選取數量函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Movie-Select-Event%E9%9B%BB%E5%BD%B1%E9%81%B8%E6%93%87%E4%BA%8B%E4%BB%B6"><span class="toc-nav-text">Movie Select Event電影選擇事件</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-2-Local-Storage"><span class="toc-nav-text">Javascript Part 2 - Local Storage</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#setMovieData-%E6%9B%B4%E6%96%B0%E9%9B%BB%E5%BD%B1%E8%B3%87%E6%96%99%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">setMovieData() 更新電影資料函式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-3-Populate-UI-With-Saved-Data"><span class="toc-nav-text">Javascript Part 3 - Populate UI With Saved Data</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#populateUI-%E5%9B%9E%E5%A1%AB%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">populateUI() 回填函式</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/01/05/Javascript-Project-Movie-Seat-Booking/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

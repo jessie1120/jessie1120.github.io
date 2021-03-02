@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript Project - Speak Number Guess | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript Project - Speak Number Guess</h2>
+  <p class="post-date">2021-01-21</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Speak-Number-Guess-聲音辨識輸入猜數字遊戲實做筆記"><a href="#Speak-Number-Guess-聲音辨識輸入猜數字遊戲實做筆記" class="headerlink" title="Speak Number Guess 聲音辨識輸入猜數字遊戲實做筆記"></a>Speak Number Guess 聲音辨識輸入猜數字遊戲實做筆記</h1><ul>
+<li><a href="#%E5%B0%88%E6%A1%88%E5%AF%A6%E4%BD%9C%E5%8A%9F%E8%83%BD%E8%AA%AA%E6%98%8E">專案實作功能說明</a></li>
+<li><a href="#Javascript-Part-1---generateRandomNumber-%E9%9A%A8%E6%A9%9F%E6%95%B8%E5%AD%97%E5%87%BD%E5%BC%8F">Javascript Part 1 -<code>generateRandomNumber</code> 隨機數字函式</a></li>
+<li><a href="#Javascript-Part-2---Get-words-form-voice-input-%E5%8F%96%E5%BE%97%E8%AA%9E%E9%9F%B3%E8%BC%B8%E5%85%A5">Javascript Part 2 -<code>Get words form voice input</code> 取得語音輸入</a></li>
+<li><a href="#Javascript-Part-3---checkNumber-%E5%88%A4%E6%96%B7%E6%95%B8%E5%AD%97%E5%87%BD%E5%BC%8F">Javascript Part 3 - <code>checkNumber</code> 判斷數字函式</a></li>
+<li><a href="#Javascript-Part-4---Continue-Game-Event-%E7%B9%BC%E7%BA%8C%E9%81%8A%E6%88%B2%E4%BA%8B%E4%BB%B6">Javascript Part 4 - <code>Continue Game Event</code> 繼續遊戲事件</a></li>
+</ul>
+<h2 id="專案實作功能說明"><a href="#專案實作功能說明" class="headerlink" title="專案實作功能說明"></a>專案實作功能說明</h2><p>這次實作的專案主要功能是利用語音辨識，與網頁進行互動玩一個猜數字遊戲<br>目前支援語音辨識輸入的瀏覽器為<code>Google Chrome</code></p>
+<p>實際需要實做的功能：</p>
+<ul>
+<li>隨機產生數字作為遊戲目標(答案)</li>
+<li>取得語音輸入辨識的結果，並放置到畫面中</li>
+<li>需要提示目前的數字與目標的差距大小</li>
+<li>答對後顯示答案並產生可再玩一次的按鈕</li>
+</ul>
+<h2 id="Javascript-Part-1-generateRandomNumber-隨機數字函式"><a href="#Javascript-Part-1-generateRandomNumber-隨機數字函式" class="headerlink" title="Javascript Part 1 - generateRandomNumber 隨機數字函式"></a>Javascript Part 1 - <code>generateRandomNumber</code> 隨機數字函式</h2><p>這邊用到的一樣是之前產生亂數的方式，並把產生的結果丟到變數<code>randomNumber</code>裡<br>運算的最後＋1是因為產生的數字會是0 - 99 而我們需要1 - 100 所以加一。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> randomNumber = generateRandomNumber()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateRandomNumber</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125; </span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-2-Get-words-form-voice-input-取得語音輸入"><a href="#Javascript-Part-2-Get-words-form-voice-input-取得語音輸入" class="headerlink" title="Javascript Part 2 - Get words form voice input 取得語音輸入"></a>Javascript Part 2 - <code>Get words form voice input</code> 取得語音輸入</h2><p>這個部分我們要取得語音辨識的結果<code>result</code>並新增到畫面上</p>
+<p>首先我們先確定可支援的瀏覽器，並將新增語音辨識功能放置到變數<code>recognition</code>中</p>
+<p>接著透過<code>.start()</code>方法啟動語音辨識 =&gt; 跳出通知需使用者同意取用麥克風</p>
+<p>建立事件監聽取得語音辨識結果<code>result</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.SpeechRecognition =</span><br><span class="line">    <span class="built_in">window</span>.SpeechRecognition || <span class="built_in">window</span>.webkitSpeechRecognition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> recognition = <span class="keyword">new</span> <span class="built_in">window</span>.SpeechRecognition();</span><br><span class="line"></span><br><span class="line">recognition.start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Event Listener</span></span><br><span class="line"></span><br><span class="line">recognition.addEventListener(<span class="string">&#x27;result&#x27;</span>, getSpeakWord); </span><br></pre></td></tr></table></figure>
+<p>這邊稍微利用<code>console.log</code>看一下我們取得了什麼東西<br>下圖是成功啟用語音辨識後會取得的：<br>紅框部分是<code>result</code>的整體內容<br>而我們需要的部分是<br>第一層：<code>SpeechRecognitionResultList</code>內的<br>第二層：<code>SpeechRecognitionResult</code>內的<br>所在陣列：<code>SpeechRecognitionResultAlternative</code>中的<code>transcript</code>這個元素</p>
+<p><img src="https://i.imgur.com/rymBqQY.png"></p>
+<p>所以我們這邊取得元素寫法為<code>e.results[0][0].transcript;</code><br>第一層：[0] (第一個陣列索引值為0)<br>第二層：[0] (第一個陣列索引值為0)<br>第三層：<code>.transcript</code> (陣列中的<code>transcript</code>元素)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSpeakWord</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> msg = e.results[<span class="number">0</span>][<span class="number">0</span>].transcript;</span><br><span class="line">    showMessage(msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著利用<code>showMessage</code>函式將我們取得的元素加入畫面(<code>DOM</code>)中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMessage</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;#msg&#x27;</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;You said: &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;span class=&quot;box&quot;&gt;<span class="subst">$&#123;msg&#125;</span>&lt;/span&gt;</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-3-checkNumber-判斷數字函式"><a href="#Javascript-Part-3-checkNumber-判斷數字函式" class="headerlink" title="Javascript Part 3 - checkNumber 判斷數字函式"></a>Javascript Part 3 - <code>checkNumber</code> 判斷數字函式</h2><p>接著除了將我們剛剛語音的元素放到畫面上還要進行判斷來提示跟目標的差距<br>這個函式的實行步驟如下：</p>
+<ol>
+<li>利用+號確保語音輸入後的數字為數字型別</li>
+<li>利用<code>isNaN()</code>來判斷語音輸入不是數字的情況，並提示取得的元素不是數字</li>
+<li>判斷式 =&gt; 超出範圍數字 =&gt; 提示數字需要1 - 100之間</li>
+<li><code>if</code>迴圈判斷大小或答對，並新增 <strong>提示</strong> 或 <strong>正確答案</strong> 至畫面上<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkNumber</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> number = +msg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Number</span>.isNaN(number)) &#123;</span><br><span class="line">        $(<span class="string">&#x27;#msg&#x27;</span>).append(<span class="string">&#x27;&lt;div&gt;That is not a valid number&lt;/div&gt;&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (number &gt; <span class="number">100</span> || number &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        $(<span class="string">&#x27;#msg&#x27;</span>).append(<span class="string">&#x27;&lt;div&gt;Number must be between 1 and 100&lt;/div&gt;&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (number=== randomNumber) &#123;</span><br><span class="line">      $(<span class="string">&#x27;body&#x27;</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">      &lt;h2&gt;Congrats! You have guessed the number! &lt;br&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">      It was <span class="subst">$&#123;number&#125;</span>&lt;/h2&gt;</span></span><br><span class="line"><span class="string">      &lt;button class=&quot;play-again&quot; id=&quot;play-again&quot;&gt;Play Again&lt;/button&gt;</span></span><br><span class="line"><span class="string">    `</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (number &gt; randomNumber) &#123;</span><br><span class="line">        $(<span class="string">&#x27;#msg&#x27;</span>).append(<span class="string">&#x27;&lt;div&gt;GO LOWER&lt;/div&gt;&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">&#x27;#msg&#x27;</span>).append(<span class="string">&#x27;&lt;div&gt;GO HIGHER&lt;/div&gt;&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part-4-Continue-Game-Event-繼續遊戲事件"><a href="#Javascript-Part-4-Continue-Game-Event-繼續遊戲事件" class="headerlink" title="Javascript Part 4 - Continue Game Event 繼續遊戲事件"></a>Javascript Part 4 - <code>Continue Game Event</code> 繼續遊戲事件</h2>最後新增兩個事件監聽：</li>
+</ol>
+<p>第一個是讓我們判斷出結果後，可以重新開始新一輪的語音辨識，<br>沒有這個事件的話只能猜一次遊戲就會停止</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">recognition.addEventListener(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    recognition.start();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接下來是猜對後我們在畫面上新增的<code>reload</code>按鈕要實際有<code>reload</code>的功能</p>
+<p>這邊的事件監聽對象因為要等到猜對後才新增出來，所以我們先綁定在父元素上，<br>後續實際點擊時透過<code>ID</code>來確認我們點擊的位置 ＝ <code>reload</code>按鈕才作<code>reload</code>動作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;body&#x27;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (e.target.id == <span class="string">&#x27;play-again&#x27;</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.location.reload();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/01/20/Javascript-Project-Typing-Game/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript Project - Typing Game
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/01/22/Javascript-Project-New-Year-Countdown/">
+        
+          Javascript Project - New Year Countdown
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Speak-Number-Guess-%E8%81%B2%E9%9F%B3%E8%BE%A8%E8%AD%98%E8%BC%B8%E5%85%A5%E7%8C%9C%E6%95%B8%E5%AD%97%E9%81%8A%E6%88%B2%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Speak Number Guess 聲音辨識輸入猜數字遊戲實做筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B0%88%E6%A1%88%E5%AF%A6%E4%BD%9C%E5%8A%9F%E8%83%BD%E8%AA%AA%E6%98%8E"><span class="toc-nav-text">專案實作功能說明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-1-generateRandomNumber-%E9%9A%A8%E6%A9%9F%E6%95%B8%E5%AD%97%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">Javascript Part 1 - generateRandomNumber 隨機數字函式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-2-Get-words-form-voice-input-%E5%8F%96%E5%BE%97%E8%AA%9E%E9%9F%B3%E8%BC%B8%E5%85%A5"><span class="toc-nav-text">Javascript Part 2 - Get words form voice input 取得語音輸入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-3-checkNumber-%E5%88%A4%E6%96%B7%E6%95%B8%E5%AD%97%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">Javascript Part 3 - checkNumber 判斷數字函式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-4-Continue-Game-Event-%E7%B9%BC%E7%BA%8C%E9%81%8A%E6%88%B2%E4%BA%8B%E4%BB%B6"><span class="toc-nav-text">Javascript Part 4 - Continue Game Event 繼續遊戲事件</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/01/21/Javascript-Project-Speak-Number-Guess/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

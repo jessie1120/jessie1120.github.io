@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Jesse&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript Project - Exchange Rate Calculator | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript Project - Exchange Rate Calculator</h2>
+  <p class="post-date">2021-01-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Exchange-Rate-Calculator-匯率轉換器實做筆記"><a href="#Exchange-Rate-Calculator-匯率轉換器實做筆記" class="headerlink" title="Exchange Rate Calculator 匯率轉換器實做筆記"></a>Exchange Rate Calculator 匯率轉換器實做筆記</h1><ul>
+<li><a href="#HTML">1. HTML</a></li>
+<li><a href="#CSS">2. CSS</a></li>
+<li><a href="#Javascript-Part">3. Javascript Part</a></li>
+<li><ul>
+<li><a href="#Calculate-%E8%A8%88%E7%AE%97%E5%87%BD%E5%BC%8F"><code>Calculate</code> 計算函式</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#Change-Event"><code>Change Event</code></a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="#Swap-Event"><code>Swap Event</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>HTML的部分，下拉選單一樣使用<code>select</code>標籤+上<code>option</code>來做出下拉選單的樣式。<br>同時在每個選項有加入代表匯率幣值的值<code>value</code>。</p>
+<p>這次另外使用了<code>jquery</code>方式撰寫，所以有加入jquery的引用↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;ajax.googleapis.com&#x2F;ajax&#x2F;libs&#x2F;jquery&#x2F;3.5.1&#x2F;jquery.min.js&quot;&gt;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>這次一樣在主要使用的顏色上融入了變數的形式，讓維護或修改時更方便並迅速。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  --primary-<span class="attribute">color</span>: <span class="number">#5fbaa7</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* background: var(--primary-color); 需要使用時填入*/</span></span><br></pre></td></tr></table></figure>
+<p>並且做了一點點的RWD變化，讓螢幕尺寸較小時，可以跟著變更顯示畫面</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.currency</span> <span class="selector-tag">input</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Part"><a href="#Javascript-Part" class="headerlink" title="Javascript Part"></a>Javascript Part</h2><p>這次影片課程採用的是原生JS的寫法，而專案製作有改用jquery，這邊會比較一下寫法的不同。<br>這個專案主要是串接匯率API到網頁，再經過函式來計算匯率轉換的結果。</p>
+<p>首先在原生JS的部分，一樣是需要先宣告我們所需要的變數，<br>但jquery在這個部分就不用做了，它的選擇器可以很快速地選到我們需要的DOM位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> currencyEl_one = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;currency-one&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> amountEl_one = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;amount-one&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> currencyEl_two = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;currency-two&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> amountEl_two = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;amount-two&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rateEl = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;rate&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> swap = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;swap&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Calculate-計算函式"><a href="#Calculate-計算函式" class="headerlink" title="Calculate() 計算函式"></a><code>Calculate()</code> 計算函式</h3><p>這個函式的功能如下↓</p>
+<ol>
+<li>先將節點的值丟到變數中以利後續在畫面顯示可以用動態的方式呈現。</li>
+<li>使用<code>fetch()</code>這個方法先從外部API取得一個包含<code>response</code>的<code>promise</code>物件</li>
+<li>使用<code>.then()</code>方法來處理這個物件，第一個<code>.then()</code>接收物件回傳給下一個<code>.then()</code>，</li>
+<li>接著將收到的資料丟進變數，接著修改<code>innerText</code>在畫面上做出匯率呈現，<br>這邊使用<code>$&#123;&#125;</code>都是要讓它動態擷取我們目前選擇的幣值。</li>
+<li>最後在做一個簡單的乘法算出金額，後面的<code>toFixed()</code>是讓它顯示到小數點後幾位的方法。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">caclulate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> currency_one = currencyEl_one.value;</span><br><span class="line">  <span class="keyword">const</span> currency_two = currencyEl_two.value;</span><br><span class="line"></span><br><span class="line">  fetch(<span class="string">`https://api.exchangerate-api.com/v4/latest/<span class="subst">$&#123;currency_one&#125;</span>`</span>)</span><br><span class="line">    .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(data);</span></span><br><span class="line">      <span class="keyword">const</span> rate = data.rates[currency_two];</span><br><span class="line"></span><br><span class="line">      rateEl.innerText = <span class="string">`1 <span class="subst">$&#123;currency_one&#125;</span> = <span class="subst">$&#123;rate&#125;</span> <span class="subst">$&#123;currency_two&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">      amountEl_two.value = (amountEl_one.value * rate).toFixed(<span class="number">2</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+以jquery的寫法我們不用先宣告變數，直接用<code>jquery</code>取值的方式<code>.val()</code>來代替。<br>修改內文的部分也是用<code>.text()</code>直接替代。<br>由於上面的箭頭函式雖然簡潔但我會有點混亂所以還是用原來的function寫法。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> fetch(<span class="string">`https://api.exchangerate-api.com/v4/latest/<span class="subst">$&#123;currency_one&#125;</span>`</span>)</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json();</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> rate = data.rates[currency_two];</span><br><span class="line">        $(<span class="string">&#x27;#rate&#x27;</span>).text(<span class="string">`1 <span class="subst">$&#123;currency_one&#125;</span> = <span class="subst">$&#123;rate&#125;</span> <span class="subst">$&#123;currency_two&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">        $(<span class="string">&#x27;#amount-two&#x27;</span>).val(($(<span class="string">&#x27;#amount-one&#x27;</span>).val() * rate).toFixed(<span class="number">4</span>)); </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Change-Event"><a href="#Change-Event" class="headerlink" title="Change Event"></a>Change Event</h3>這邊是當我們在畫面上操作，有選擇不同的幣值或金額時可以即時修正，<br>下方有補上一個函式呼叫讓我們畫面載入時就可以直接顯示當前的預設匯率。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">currencyEl_one.addEventListener(<span class="string">&#x27;change&#x27;</span>, caclulate);</span><br><span class="line">amountEl_one.addEventListener(<span class="string">&#x27;input&#x27;</span>, caclulate);</span><br><span class="line">currencyEl_two.addEventListener(<span class="string">&#x27;change&#x27;</span>, caclulate);</span><br><span class="line">amountEl_two.addEventListener(<span class="string">&#x27;input&#x27;</span>, caclulate);</span><br><span class="line">calculate(); </span><br></pre></td></tr></table></figure>
+<p>jquery這邊的話比起上面先把變數都宣告好的寫法，稍微複雜一點，<br>但看起來比較直覺，不用去想現在這個變數代表DOM哪裡的節點位置。<br>事件寫法大致就是<code>$(&#39;要選擇的節點位置&#39;).change(呼叫函式)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#currency-one&#x27;</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    calculate(); </span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">&#x27;#currency-two&#x27;</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    calculate();</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">&#x27;#amout-one&#x27;</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    calculate();</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">&#x27;#amout-two&#x27;</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    calculate();</span><br><span class="line">&#125;);</span><br><span class="line">calculate(); </span><br></pre></td></tr></table></figure>
+<h3 id="Swap-Event"><a href="#Swap-Event" class="headerlink" title="Swap Event"></a>Swap Event</h3><p>這個事件的功能是我們畫面上的Swap按鈕在點擊時能夠自動交換匯率1跟匯率2，步驟如下↓</p>
+<ol>
+<li>先將匯率1的值 =&gt; 丟在<code>temp</code>變數</li>
+<li>將匯率2的值改為匯率1的值</li>
+<li>再將原來<code>temp</code>變數中儲存的匯率1的值改為匯率2的值</li>
+<li>最後在呼叫函式進行重新計算</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">swap.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> temp = currencyEl_one.value;</span><br><span class="line">  currencyEl_one.value = currencyEl_two.value;</span><br><span class="line">  currencyEl_two.value = temp;</span><br><span class="line">  caclulate();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>jquery</code>的部分其實寫起來一模一樣，只是將前面原生<code>.value</code>這個方式全部改成<code>jquery</code>的<code>.val()</code><br>前面的<code>=</code>進行賦值，這邊就改成直接丟進<code>.val()</code>的括號裡。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#swap&#x27;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> temp = $(<span class="string">&#x27;#currency-one&#x27;</span>).val();</span><br><span class="line">    $(<span class="string">&#x27;#currency-one&#x27;</span>).val($(<span class="string">&#x27;#currency-two&#x27;</span>).val());</span><br><span class="line">    $(<span class="string">&#x27;#currency-two&#x27;</span>).val(temp);</span><br><span class="line">    calculate();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/01/05/Javascript-Project-Movie-Seat-Booking/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript Project - Movie Seat Booking
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/01/08/Javascript-Project-Expense-Tracker/">
+        
+          Javascript Project - Expense Tracker
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Exchange-Rate-Calculator-%E5%8C%AF%E7%8E%87%E8%BD%89%E6%8F%9B%E5%99%A8%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Exchange Rate Calculator 匯率轉換器實做筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTML"><span class="toc-nav-text">HTML</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS"><span class="toc-nav-text">CSS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part"><span class="toc-nav-text">Javascript Part</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Calculate-%E8%A8%88%E7%AE%97%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">Calculate() 計算函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Change-Event"><span class="toc-nav-text">Change Event</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Swap-Event"><span class="toc-nav-text">Swap Event</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/01/06/Javascript-Project-Exchange-Rate-Calculator/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
