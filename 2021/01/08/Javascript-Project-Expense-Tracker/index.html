@@ -1,156 +1,158 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="Jesse&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
-  
-    <link rel="shortcut icon" href="/css/images/logo.png">
-  
-  <title>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Expense Tracker 記帳列表實做筆記  HTML  CSS  Javascript Part 1 - addTransactionDOM &amp; init function  Javascript Part 2 - updateValues function  Javascript Part 3 - Submit Event 提交事件  addTransaction 列表添加函式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Project - Expense Tracker">
+<meta property="og:url" content="http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/index.html">
+<meta property="og:site_name" content="Jesse&#39;s Blog">
+<meta property="og:description" content="Expense Tracker 記帳列表實做筆記  HTML  CSS  Javascript Part 1 - addTransactionDOM &amp; init function  Javascript Part 2 - updateValues function  Javascript Part 3 - Submit Event 提交事件  addTransaction 列表添加函式">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/G4SBGJR.png">
+<meta property="article:published_time" content="2021-01-07T16:42:33.000Z">
+<meta property="article:modified_time" content="2021-03-02T16:42:50.222Z">
+<meta property="article:author" content="Jesse Fang">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/G4SBGJR.png">
     
-      Javascript Project - Expense Tracker | Hexo
     
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Javascript Project - Expense Tracker</title>
+    <!-- styles -->
+    
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-  
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
-  
+    
+    <!-- rss -->
+    
+    
 <meta name="generator" content="Hexo 5.4.0"></head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>Hexo</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags/" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives/" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about/" class="item-link">About</a>
-          
-        </li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags/" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about/" class="menu-link">About</a>
-            
-          </li>
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首頁</a></li>
+         
+          <li><a href="/about/">關於</a></li>
+         
+          <li><a href="/archives/">文章</a></li>
         
       </ul>
-    </div>
-  </div>
-</header>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/01/18/Javascript-Project-Music-Player/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2021/01/06/Javascript-Project-Exchange-Rate-Calculator/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">回到頁首</span>
+      <span id="i-share" class="info" style="display:none;">分享</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&text=Javascript Project - Expense Tracker"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&is_video=false&description=Javascript Project - Expense Tracker"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Javascript Project - Expense Tracker&body=Check out this article: http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&name=Javascript Project - Expense Tracker&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&t=Javascript Project - Expense Tracker"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-    <div id="article-banner">
-  <h2>Javascript Project - Expense Tracker</h2>
-  <p class="post-date">2021-01-08</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Expense-Tracker-%E8%A8%98%E5%B8%B3%E5%88%97%E8%A1%A8%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-number">1.</span> <span class="toc-text">Expense Tracker 記帳列表實做筆記</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.1.</span> <span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">1.2.</span> <span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-1-addTransactionDOM-amp-init-function"><span class="toc-number">1.3.</span> <span class="toc-text">Javascript Part 1 - addTransactionDOM &amp; init function</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#addTransactionDOM-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">addTransactionDOM() 列表添加函式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">init() 初始化函式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-2-updateValues-function"><span class="toc-number">1.4.</span> <span class="toc-text">Javascript Part 2 - updateValues function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-3-Submit-Event-%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">Javascript Part 3 - Submit Event 提交事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#addTransaction-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F-amp-generateID-%E4%BA%82%E6%95%B8%E7%94%A2%E7%94%9FID%E5%87%BD%E5%BC%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text">addTransaction 列表添加函式  &amp; generateID 亂數產生ID函式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeTransaction-%E5%88%AA%E9%99%A4%E5%88%97%E8%A1%A8%E5%87%BD%E5%BC%8F"><span class="toc-number">1.5.2.</span> <span class="toc-text">removeTransaction 刪除列表函式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-4-Local-Storage"><span class="toc-number">1.6.</span> <span class="toc-text">Javascript Part 4 - Local Storage</span></a></li></ol></li></ol>
+    </div>
+  </span>
 </div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><h1 id="Expense-Tracker-記帳列表實做筆記"><a href="#Expense-Tracker-記帳列表實做筆記" class="headerlink" title="Expense Tracker 記帳列表實做筆記"></a>Expense Tracker 記帳列表實做筆記</h1><ul>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Javascript Project - Expense Tracker
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Jesse Fang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-01-07T16:42:33.000Z" itemprop="datePublished">2021-01-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Expense-Tracker-記帳列表實做筆記"><a href="#Expense-Tracker-記帳列表實做筆記" class="headerlink" title="Expense Tracker 記帳列表實做筆記"></a>Expense Tracker 記帳列表實做筆記</h1><ul>
 <li><a href="#HTML"> HTML</a></li>
 <li><a href="#CSS"> CSS</a></li>
 <li><a href="#Javascript-Part-1---addTransactionDOM-amp-init-function"> Javascript Part 1 - <code>addTransactionDOM</code> &amp; <code>init</code> function</a></li>
@@ -252,171 +254,139 @@
 <p>接著在建立一個變數<code>transactions</code> =&gt;<br>判斷不為空 =&gt; 使用<code>localStorageTransactions</code>將資料轉為陣列<br>為空 =&gt; 建立空陣列<code>[]</code></p>
 <p>接著做一個函式<code>updateLocalStorage()</code>將輸入的資料陣列轉為字串存入<code>Local Storage</code><br>使用<code>JSON.stringify</code></p>
 <p>最後在添加列表及刪除列表中加入這個函式，讓添加或刪除時可以更新<code>Local Storage</code>的狀態。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> localStorageTransactions = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;transactions&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> transactions = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;transactions&#x27;</span>) </span><br><span class="line">!== <span class="literal">null</span> </span><br><span class="line">? localStorageTransactions : [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateLocalStorage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;transactions&#x27;</span>, <span class="built_in">JSON</span>.stringify(transactions));</span><br></pre></td></tr></table></figure></section>
-    <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#Javascript" >
-    <span class="tag-code">Javascript</span>
-  </a>
-
-      </div>
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="/2021/01/06/Javascript-Project-Exchange-Rate-Calculator/">
-        <span class="nav-arrow">← </span>
-        
-          Javascript Project - Exchange Rate Calculator
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/2021/01/18/Javascript-Project-Music-Player/">
-        
-          Javascript Project - Music Player
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> localStorageTransactions = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;transactions&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> transactions = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;transactions&#x27;</span>) </span><br><span class="line">!== <span class="literal">null</span> </span><br><span class="line">? localStorageTransactions : [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateLocalStorage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;transactions&#x27;</span>, <span class="built_in">JSON</span>.stringify(transactions));</span><br></pre></td></tr></table></figure>
   </div>
+</article>
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-    <!-- 二维码 END -->
-    
-      <!-- No Comment -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Expense-Tracker-%E8%A8%98%E5%B8%B3%E5%88%97%E8%A1%A8%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-nav-text">Expense Tracker 記帳列表實做筆記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTML"><span class="toc-nav-text">HTML</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS"><span class="toc-nav-text">CSS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-1-addTransactionDOM-amp-init-function"><span class="toc-nav-text">Javascript Part 1 - addTransactionDOM &amp; init function</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#addTransactionDOM-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">addTransactionDOM() 列表添加函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#init-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">init() 初始化函式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-2-updateValues-function"><span class="toc-nav-text">Javascript Part 2 - updateValues function</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-3-Submit-Event-%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"><span class="toc-nav-text">Javascript Part 3 - Submit Event 提交事件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#addTransaction-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F-amp-generateID-%E4%BA%82%E6%95%B8%E7%94%A2%E7%94%9FID%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">addTransaction 列表添加函式  &amp; generateID 亂數產生ID函式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#removeTransaction-%E5%88%AA%E9%99%A4%E5%88%97%E8%A1%A8%E5%87%BD%E5%BC%8F"><span class="toc-nav-text">removeTransaction 刪除列表函式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Javascript-Part-4-Local-Storage"><span class="toc-nav-text">Javascript Part 4 - Local Storage</span></a></li></ol></li></ol>
-    
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首頁</a></li>
+         
+          <li><a href="/about/">關於</a></li>
+         
+          <li><a href="/archives/">文章</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Expense-Tracker-%E8%A8%98%E5%B8%B3%E5%88%97%E8%A1%A8%E5%AF%A6%E5%81%9A%E7%AD%86%E8%A8%98"><span class="toc-number">1.</span> <span class="toc-text">Expense Tracker 記帳列表實做筆記</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.1.</span> <span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">1.2.</span> <span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-1-addTransactionDOM-amp-init-function"><span class="toc-number">1.3.</span> <span class="toc-text">Javascript Part 1 - addTransactionDOM &amp; init function</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#addTransactionDOM-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">addTransactionDOM() 列表添加函式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">init() 初始化函式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-2-updateValues-function"><span class="toc-number">1.4.</span> <span class="toc-text">Javascript Part 2 - updateValues function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-3-Submit-Event-%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">Javascript Part 3 - Submit Event 提交事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#addTransaction-%E5%88%97%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%87%BD%E5%BC%8F-amp-generateID-%E4%BA%82%E6%95%B8%E7%94%A2%E7%94%9FID%E5%87%BD%E5%BC%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text">addTransaction 列表添加函式  &amp; generateID 亂數產生ID函式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeTransaction-%E5%88%AA%E9%99%A4%E5%88%97%E8%A1%A8%E5%87%BD%E5%BC%8F"><span class="toc-number">1.5.2.</span> <span class="toc-text">removeTransaction 刪除列表函式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-Part-4-Local-Storage"><span class="toc-number">1.6.</span> <span class="toc-text">Javascript Part 4 - Local Storage</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&text=Javascript Project - Expense Tracker"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&is_video=false&description=Javascript Project - Expense Tracker"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Javascript Project - Expense Tracker&body=Check out this article: http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&title=Javascript Project - Expense Tracker"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&name=Javascript Project - Expense Tracker&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/&t=Javascript Project - Expense Tracker"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 選單</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 文章目錄</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 頁首</a>
+    </div>
+
   </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
-
-<script>
-  (function () {
-    var url = 'http://example.com/2021/01/08/Javascript-Project-Expense-Tracker/';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
-
-    // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== 'http://file.muyutech.com/error-img.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
-  })();
-</script>
-
-
-
-
-
-
-
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
 </div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-  </p>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    Jesse Fang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首頁</a></li>
+         
+          <li><a href="/about/">關於</a></li>
+         
+          <li><a href="/archives/">文章</a></li>
+        
+      </ul>
+    </nav>
+  </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
+    </div>
+    <!-- styles -->
 
-<script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
       }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
     });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
   })
-</script>
-<!-- Baidu Tongji -->
+  </script>
 
 
-<script src="/js/script.js"></script>
+<script src="/js/main.js"></script>
 
-  </body>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
 </html>
